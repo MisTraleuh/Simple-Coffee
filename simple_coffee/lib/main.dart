@@ -7,8 +7,7 @@ import 'package:flutter/services.dart';
 /**************************
 *      PAGES IMPORTS      *
 **************************/
-import 'package:simple_coffee/pages/HomePage.dart';
-import 'package:simple_coffee/pages/CommandePage.dart';
+import 'package:simple_coffee/pages/OnBoardingPage.dart';
 
 void main() {
   runApp(
@@ -24,7 +23,6 @@ class MyApp extends StatefulWidget {
 
   @override
   _MyAppState createState() => _MyAppState();
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -44,8 +42,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
-        '/commande': (context) => const CommandePage(),
+        '/': (context) => const OnBoardingPage(),
       },
     );
   }
