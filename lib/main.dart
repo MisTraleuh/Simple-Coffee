@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 **************************/
 import 'package:simple_coffee/pages/OnBoardingPage.dart';
 import 'package:simple_coffee/pages/Register.dart';
+import 'package:simple_coffee/pages/LoginInPage.dart';
 
 /**************************
 *     FLUTTER IMPORTS     *
@@ -61,6 +62,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const OnBoardingPage(),
         '/register' : (context) => const RegisterPage(),
+        '/login' : (context) => const LoginPage(),
       },
     );
   }
