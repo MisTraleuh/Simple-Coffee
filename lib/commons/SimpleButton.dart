@@ -8,6 +8,7 @@ class SimpleCard extends StatelessWidget {
   final Color color;
   final Color? startColor;
   final Color? endColor;
+  final double? borderRadius;
 
   const SimpleCard({
     Key? key,
@@ -15,6 +16,7 @@ class SimpleCard extends StatelessWidget {
     required this.color,
     this.startColor,
     this.endColor,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -23,10 +25,15 @@ class SimpleCard extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(borderRadius ?? 10),
         border: Border.all(
           width: 2,
           color: color,
+        ),
+        gradient: LinearGradient(
+          colors: [startColor ?? color, endColor ?? color],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
       child: Row(

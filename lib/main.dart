@@ -3,13 +3,19 @@
 **************************/
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 /**************************
 *      PAGES IMPORTS      *
 **************************/
 import 'package:simple_coffee/pages/OnBoardingPage.dart';
 import 'package:simple_coffee/pages/Register.dart';
-import 'package:simple_coffee/pages/LoginInPage.dart';
+import 'package:simple_coffee/pages/LoginPage.dart';
+
+/**************************
+*    PROVIDERS IMPORTS    *
+**************************/
+import 'package:simple_coffee/providers/ProfileInformations.dart';
 
 /**************************
 *     FLUTTER IMPORTS     *
@@ -20,7 +26,12 @@ const Color secondaryColor = Color.fromARGB(255, 96, 60, 38);
 
 void main() {
   runApp(
-    const MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProfileInformations()),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 

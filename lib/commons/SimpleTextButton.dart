@@ -7,12 +7,14 @@ class SimpleTextButton extends StatefulWidget {
   final String labelText;
   final String hintText;
   final Color color;
+  final void Function(String)? onChanged;
 
   const SimpleTextButton({
     Key? key,
     required this.labelText,
     required this.hintText,
     required this.color,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -20,11 +22,32 @@ class SimpleTextButton extends StatefulWidget {
 }
 
 class _SimpleTextButtonState extends State<SimpleTextButton> {
+  late FocusNode _focusNode;
+  bool _isFocused = false;
+  double height = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _focusNode.addListener(_handleFocusChange);
+  }
+
+  void _handleFocusChange() {
+    setState(() {
+      _isFocused = _focusNode.hasFocus;
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    double heigth = MediaQuery.of(context).size.height;
+    height = MediaQuery.of(context).size.height;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,19 +60,15 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox( height: heigth / 100 ),
+        SizedBox( height: height / 100 ),
         TextField(
+          focusNode: _focusNode,
           style: const TextStyle(
             color: Colors.white,
           ),
           textAlign: TextAlign.center,
+          textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-              borderSide: const BorderSide(
-                color: Colors.red,
-              ),
-            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide.none,
@@ -67,15 +86,13 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
             filled: true,
             fillColor: widget.color,
             border: const OutlineInputBorder(),
-            hintText: widget.hintText,
+            hintText: _isFocused ? null : widget.hintText,
             hintStyle: TextStyle(
               color: Colors.white.withOpacity(0.5),
             ),
           ),
           cursorColor: Colors.white,
-          onChanged: (value) {
-            print(value);
-          },
+          onChanged: widget.onChanged,
         ),
       ],
     );
