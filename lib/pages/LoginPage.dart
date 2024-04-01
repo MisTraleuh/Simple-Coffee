@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             height: height / 2.9,
             width: width,
             child: const CommonTopImage(
-              imagePath: "assets/app/LoginPage.png",
+              imagePath: "assets/app/OnBoarding/LoginPage.png",
             ),
           ),
           SizedBox( height: height / 50.6 ),

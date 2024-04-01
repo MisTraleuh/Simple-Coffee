@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Stack(
         children: <Widget>[
           Image.asset(
-            "assets/app/RegisterPage.png",
+            "assets/app/OnBoarding/RegisterPage.png",
             height: height,
             width: width,
             fit: BoxFit.cover,

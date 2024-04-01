@@ -15,17 +15,17 @@ import 'package:simple_coffee/commons/SimpleTextButton.dart';
 **************************/
 import 'package:simple_coffee/providers/ProfileInformations.dart';
 
-class SignInStep2 extends StatefulWidget {
+class SignInStep1 extends StatefulWidget {
 
-  const SignInStep2({
+  const SignInStep1({
     Key? key
   }) : super(key: key);
 
   @override
-  State<SignInStep2> createState() => _SignInStep2State();
+  State<SignInStep1> createState() => _SignInStep1State();
 }
 
-class _SignInStep2State extends State<SignInStep2> {
+class _SignInStep1State extends State<SignInStep1> {
 
   late ProfileInformations profileInformations;
 
@@ -62,7 +62,7 @@ class _SignInStep2State extends State<SignInStep2> {
                 height: height / 2.9,
                 width: width,
                 child: const CommonTopImage(
-                  imagePath: "assets/app/SigninStep2.png",
+                  imagePath: "assets/app/OnBoarding/SignIn/SigninStep1.png",
                 ),
               ),
               Positioned(
@@ -98,40 +98,27 @@ class _SignInStep2State extends State<SignInStep2> {
             child: SizedBox(
               height: height / 90,
               child: LinearProgressIndicator(
-                value: 0.66,
+                value: 0.33,
                 backgroundColor: Colors.grey,
-                valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 150, 93, 57)),
+                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height / 20.6 ),
           Padding(
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: SimpleTextButton(
-              labelText: "Password",
-              hintText: "Enter your password",
-              obscureText: true,
-              color: Theme.of(context).colorScheme.primary,
-              onChanged: (String value) {
-                profileInformations.setPasswordInput(value);
-              },
-            ),
-          ),
-          SizedBox( height: height / 40.6 ),
-          Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
-            child: SimpleTextButton(
-              labelText: "Confirm Password",
-              hintText: "Confirm your password",
-              obscureText: true,
+              labelText: "Email / Phone number",
+              hintText: "Enter your email or phone number",
+              obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
                 profileInformations.setEmailInput(value);
               },
             ),
           ),
-          SizedBox( height: height / 20.6 ),
+          SizedBox( height: height / 10.6 ),
           Padding(
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: GestureDetector(

@@ -26,7 +26,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       body: Stack(
         children: <Widget>[
           Image.asset(
-            "assets/app/OnBoardingPage.png",
+            "assets/app/OnBoarding/OnBoardingPage.png",
             height: height,
             width: width,
             fit: BoxFit.cover,

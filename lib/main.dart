@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 import 'package:simple_coffee/pages/OnBoardingPage.dart';
 import 'package:simple_coffee/pages/Register.dart';
 import 'package:simple_coffee/pages/LoginPage.dart';
-import 'package:simple_coffee/pages/SigninStep1.dart';
-import 'package:simple_coffee/pages/SigninStep2.dart';
+import 'package:simple_coffee/pages/SignIn/SigninStep1.dart';
+import 'package:simple_coffee/pages/SignIn/SigninStep2.dart';
 
 /**************************
 *    PROVIDERS IMPORTS    *
