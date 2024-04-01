@@ -52,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
             padding: EdgeInsets.only(top: height / 1.6),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/signup-1");
+                Navigator.pushNamed(context, '/signin-s1');
               },
               child: Center(
                 child: SizedBox(

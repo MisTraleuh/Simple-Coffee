@@ -8,6 +8,7 @@ class SimpleTextButton extends StatefulWidget {
   final String hintText;
   final Color color;
   final void Function(String)? onChanged;
+  final bool obscureText;
 
   const SimpleTextButton({
     Key? key,
@@ -15,6 +16,7 @@ class SimpleTextButton extends StatefulWidget {
     required this.hintText,
     required this.color,
     required this.onChanged,
+    required this.obscureText,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class SimpleTextButton extends StatefulWidget {
 class _SimpleTextButtonState extends State<SimpleTextButton> {
   late FocusNode _focusNode;
   bool _isFocused = false;
+  bool _isObscured = false;
   double height = 0;
 
   @override
@@ -31,6 +34,7 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
     super.initState();
     _focusNode = FocusNode();
     _focusNode.addListener(_handleFocusChange);
+    _isObscured = widget.obscureText;
   }
 
   void _handleFocusChange() {
@@ -56,7 +60,7 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
           widget.labelText,
           style: const TextStyle(
             color: Colors.black,
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -66,9 +70,21 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
           style: const TextStyle(
             color: Colors.white,
           ),
+          obscureText: _isObscured,
           textAlign: TextAlign.center,
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
+            suffixIcon: (widget.obscureText == true ? IconButton(
+              icon: Icon(
+                _isObscured ? Icons.visibility : Icons.visibility_off,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                setState(() {
+                  _isObscured = !_isObscured;
+                });
+              },
+            ) : null),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide.none,

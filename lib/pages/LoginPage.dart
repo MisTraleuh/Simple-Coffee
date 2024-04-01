@@ -79,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
             child: SimpleTextButton(
               labelText: "Email / Phone number",
               hintText: "Enter your email or phone number",
+              obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
                 profileInformations.setEmailInput(value);
@@ -91,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
             child: SimpleTextButton(
               labelText: "Password",
               hintText: "Enter your password",
+              obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
                 profileInformations.setPasswordInput(value);
@@ -113,18 +115,18 @@ class _LoginPageState extends State<LoginPage> {
           ),
           const Spacer(),
           Align(
-              alignment: Alignment.bottomCenter,
-              child: WaveWidget(
-                config: CustomConfig(
-                  colors: [Theme.of(context).colorScheme.primary],
-                  durations: _durations,
-                  heightPercentages: _heightPercentages,
-                ),
-                backgroundColor: Colors.transparent,
-                size: const Size(double.infinity, 15.0),
-                waveAmplitude: 13,
+            alignment: Alignment.bottomCenter,
+            child: WaveWidget(
+              config: CustomConfig(
+                colors: [Theme.of(context).colorScheme.primary],
+                durations: _durations,
+                heightPercentages: _heightPercentages,
               ),
+              backgroundColor: Colors.transparent,
+              size: const Size(double.infinity, 15.0),
+              waveAmplitude: 13,
             ),
+          ),
         ],
       ),
     );

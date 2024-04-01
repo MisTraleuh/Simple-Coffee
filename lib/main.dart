@@ -11,6 +11,8 @@ import 'package:provider/provider.dart';
 import 'package:simple_coffee/pages/OnBoardingPage.dart';
 import 'package:simple_coffee/pages/Register.dart';
 import 'package:simple_coffee/pages/LoginPage.dart';
+import 'package:simple_coffee/pages/SigninStep1.dart';
+import 'package:simple_coffee/pages/SigninStep2.dart';
 
 /**************************
 *    PROVIDERS IMPORTS    *
@@ -74,6 +76,8 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => const OnBoardingPage(),
         '/register' : (context) => const RegisterPage(),
         '/login' : (context) => const LoginPage(),
+        '/signin-s1' : (context) => const SignInStep1(),
+        '/signin-s2' : (context) => const SignInStep2(),
       },
     );
   }
