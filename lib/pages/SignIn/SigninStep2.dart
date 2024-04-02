@@ -127,7 +127,7 @@ class _SignInStep2State extends State<SignInStep2> {
               obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformations.setEmailInput(value);
+                profileInformations.setConfirmPasswordInput(value);
               },
             ),
           ),
@@ -136,7 +136,7 @@ class _SignInStep2State extends State<SignInStep2> {
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/signin-s2');
+                Navigator.pushNamed(context, '/signin-s3');
               },
               child: SizedBox(
                 height: height / 15.24,

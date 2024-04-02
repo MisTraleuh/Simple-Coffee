@@ -13,6 +13,7 @@ import 'package:simple_coffee/pages/Register.dart';
 import 'package:simple_coffee/pages/LoginPage.dart';
 import 'package:simple_coffee/pages/SignIn/SigninStep1.dart';
 import 'package:simple_coffee/pages/SignIn/SigninStep2.dart';
+import 'package:simple_coffee/pages/SignIn/SigninStep3.dart';
 
 /**************************
 *    PROVIDERS IMPORTS    *
@@ -78,6 +79,7 @@ class _MyAppState extends State<MyApp> {
         '/login' : (context) => const LoginPage(),
         '/signin-s1' : (context) => const SignInStep1(),
         '/signin-s2' : (context) => const SignInStep2(),
+        '/signin-s3' : (context) => const SignInStep3(),
       },
     );
   }
