@@ -1,10 +1,9 @@
+// FLUTTER IMPORTS
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-/**************************
-*      PAGES IMPORTS      *
-**************************/
+// PAGES IMPORTS
 import 'package:simple_coffee/pages/OnBoardingPage.dart';
 import 'package:simple_coffee/pages/Register.dart';
 import 'package:simple_coffee/pages/LoginPage.dart';
@@ -12,15 +11,10 @@ import 'package:simple_coffee/pages/SignIn/SigninStep1.dart';
 import 'package:simple_coffee/pages/SignIn/SigninStep2.dart';
 import 'package:simple_coffee/pages/SignIn/SigninStep3.dart';
 
-/**************************
-*    PROVIDERS IMPORTS    *
-**************************/
-import 'package:simple_coffee/providers/ProfileInformations.dart';
+// PROVIDERS IMPORTS
+import 'package:simple_coffee/state_management/providers/ProfileInformations.dart';
 
-/**************************
-*     FLUTTER IMPORTS     *
-*    (Material Design)    *
-**************************/
+// Material Design
 const Color primaryColor = Color.fromARGB(255, 198, 124, 78);
 const Color secondaryColor = Color.fromARGB(255, 96, 60, 38);
 
@@ -28,7 +22,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ProfileInformations()),
+        ChangeNotifierProvider(create: (context) => ProfileInformation()),
       ],
       child: const MyApp(),
     ),
@@ -42,7 +36,9 @@ class MyApp extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() {
+    return _MyAppState();
+  }
 }
 
 class _MyAppState extends State<MyApp> {

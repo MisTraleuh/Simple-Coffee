@@ -10,7 +10,7 @@ import 'package:simple_coffee/commons/SimpleTextButton.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/providers/ProfileInformations.dart';
+import 'package:simple_coffee/state_management/providers/ProfileInformations.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -44,18 +44,36 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformations = Provider.of<ProfileInformations>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
 
     return Scaffold( 
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: height / 2.9,
-            width: width,
-            child: const CommonTopImage(
-              imagePath: "assets/app/OnBoarding/LoginPage.png",
-            ),
+                    Stack(
+            children: <Widget>[
+              SizedBox(
+                height: height / 2.9,
+                width: width,
+                child: const CommonTopImage(
+                  imagePath: "assets/app/OnBoarding/LoginPage.png",
+                ),
+              ),
+              Positioned(
+                top: height / 20.6,
+                left: width / 12,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox( height: height / 50.6 ),
           const Center(
@@ -77,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformations.setEmailInput(value);
+                profileInformation.updateEmail(value);
               },
             ),
           ),
@@ -90,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformations.setPasswordInput(value);
+                profileInformation.updatePassword(value);
               },
             ),
           ),

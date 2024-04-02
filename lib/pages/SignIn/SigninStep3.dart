@@ -10,7 +10,7 @@ import 'package:simple_coffee/commons/SimpleTextButton.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/providers/ProfileInformations.dart';
+import 'package:simple_coffee/state_management/providers/ProfileInformations.dart';
 
 class SignInStep3 extends StatefulWidget {
 
@@ -45,7 +45,7 @@ class _SignInStep3State extends State<SignInStep3> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformations = Provider.of<ProfileInformations>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -109,7 +109,7 @@ class _SignInStep3State extends State<SignInStep3> {
               obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformations.setUsernameInput(value);
+                profileInformation.updateUsername(value);
               },
             ),
           ),
