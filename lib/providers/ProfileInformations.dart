@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 
 class ProfileInformations extends ChangeNotifier {
-  String emailIntput = "";
-  String passwordInput = "";
-  String confirmPasswordInput = "";
-  String usernameInput = "";
+  String _emailInput = "";
+  String _passwordInput = "";
+  String _confirmPasswordInput = "";
+  String _usernameInput = "";
 
-  String get getEmailInput => emailIntput;
-  String get getPasswordInput => passwordInput;
-  String get getConfirmPasswordInput => confirmPasswordInput;
-  String get getUsernameInput => usernameInput;
+  String get emailInput => _emailInput;
+  String get passwordInput => _passwordInput;
+  String get confirmPasswordInput => _confirmPasswordInput;
+  String get usernameInput => _usernameInput;
 
   void setEmailInput(String volume) {
-    emailIntput = volume;
+    _emailInput = volume;
     notifyListeners();
   }
 
   void setPasswordInput(String volume) {
-    passwordInput = volume;
+    _passwordInput = volume;
     notifyListeners();
   }
 
   void setConfirmPasswordInput(String volume) {
-    confirmPasswordInput = volume;
+    _confirmPasswordInput = volume;
     notifyListeners();
   }
 
   void setUsernameInput(String volume) {
-    usernameInput = volume;
+    _usernameInput = volume;
     notifyListeners();
   }
 }

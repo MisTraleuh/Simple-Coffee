@@ -24,8 +24,6 @@ class SignInStep1 extends StatefulWidget {
 
 class _SignInStep1State extends State<SignInStep1> {
 
-  late ProfileInformations profileInformations;
-
   static const int minimum = 4800;
   static const int maximum = 5500;
 
@@ -47,7 +45,7 @@ class _SignInStep1State extends State<SignInStep1> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    profileInformations = Provider.of<ProfileInformations>(context, listen: true);
+    final profileInformations = Provider.of<ProfileInformations>(context, listen: true);
 
     return Scaffold(
       backgroundColor: Colors.white,
