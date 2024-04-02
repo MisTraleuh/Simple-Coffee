@@ -1,6 +1,3 @@
-/**************************
-*     FLUTTER IMPORTS     *
-**************************/
 import 'package:flutter/material.dart';
 
 class MessageCardDetails extends StatelessWidget {

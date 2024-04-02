@@ -1,6 +1,3 @@
-/**************************
-*     FLUTTER IMPORTS     *
-**************************/
 import 'package:flutter/material.dart';
 import 'package:simple_coffee/commons/CustomBackgroundDrawer.dart';
 

@@ -1,6 +1,3 @@
-/**************************
-*     FLUTTER IMPORTS     *
-**************************/
 import 'package:flutter/material.dart';
 
 class SimpleTextButton extends StatefulWidget {

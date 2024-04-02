@@ -1,6 +1,4 @@
-/**************************
-*     FLUTTER IMPORTS     *
-**************************/
+
 
 class IconTextCardManager {
   int _nextId = 0;
