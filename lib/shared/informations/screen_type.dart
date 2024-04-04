@@ -11,8 +11,10 @@ enum ScreenType { desktop, tablet, handset, watch }
 
 ScreenType getFormFactor(BuildContext context) {
   double deviceWidth = MediaQuery.of(context).size.shortestSide;
+
   if (deviceWidth > FormFactor.desktop) return ScreenType.desktop;
   if (deviceWidth > FormFactor.tablet) return ScreenType.tablet;
   if (deviceWidth > FormFactor.handset) return ScreenType.handset;
+
   return ScreenType.watch;
 }
