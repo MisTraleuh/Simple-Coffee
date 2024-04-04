@@ -4,15 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 // PAGES IMPORTS
-import 'package:simple_coffee/pages/on_boarding_page.dart';
-import 'package:simple_coffee/pages/register.dart';
-import 'package:simple_coffee/pages/login_page.dart';
-import 'package:simple_coffee/pages/SignIn/sign_in_step1.dart';
-import 'package:simple_coffee/pages/SignIn/sign_in_step2.dart';
-import 'package:simple_coffee/pages/SignIn/sign_in_step3.dart';
+import 'package:simple_coffee/features/authentication/on_boarding_page.dart';
+import 'package:simple_coffee/features/authentication/register.dart';
+import 'package:simple_coffee/features/authentication/login_in/login_page.dart';
+import 'package:simple_coffee/features/authentication/sign_in/sign_in_step1.dart';
+import 'package:simple_coffee/features/authentication/sign_in/sign_in_step2.dart';
+import 'package:simple_coffee/features/authentication/sign_in/sign_in_step3.dart';
 
 // PROVIDERS IMPORTS
-import 'package:simple_coffee/state_management/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information.dart';
 
 // Material Design
 const Color primaryColor = Color.fromARGB(255, 198, 124, 78);
