@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 // PAGES IMPORTS
-import 'package:simple_coffee/features/authentication/on_boarding_page.dart';
+import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page.dart';
 import 'package:simple_coffee/features/authentication/register.dart';
 import 'package:simple_coffee/features/authentication/login_in/login_page.dart';
 import 'package:simple_coffee/features/authentication/sign_in/sign_in_step1.dart';
@@ -13,6 +13,9 @@ import 'package:simple_coffee/features/authentication/sign_in/sign_in_step3.dart
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information.dart';
+
+// RESPONSIVE IMPORTS
+import 'package:simple_coffee/shared/responsive/screen_type.dart';
 
 // Material Design
 const Color primaryColor = Color.fromARGB(255, 198, 124, 78);
@@ -67,12 +70,38 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const OnBoardingPage(),
-        '/register' : (context) => const RegisterPage(),
-        '/login' : (context) => const LoginPage(),
-        '/signin-s1' : (context) => const SignInStep1(),
-        '/signin-s2' : (context) => const SignInStep2(),
-        '/signin-s3' : (context) => const SignInStep3(),
+        '/': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return OnBoardingPage(screenType: screenType);
+              },
+            ),
+            /*
+        '/register': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return RegisterPage(screenType: screenType);
+              },
+            ),
+        '/login': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return LoginPage(screenType: screenType);
+              },
+            ),
+        '/signin-s1': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return SignInStep1(screenType: screenType);
+              },
+            ),
+        '/signin-s2': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return SignInStep2(screenType: screenType);
+              },
+            ),
+        '/signin-s3': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return SignInStep3(screenType: screenType);
+              },
+            ),
+            */
       },
     );
   }

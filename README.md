@@ -6,7 +6,7 @@ Simple Coffee is a project that aims to train my skills in Flutter.
 
 ![Maquete](./assets/readme/Coffee_Maquette.png)
 
-## ⚡️ Download | Install
+## ⚡️ [er0d3s_release.bak.apk](..%2F..%2F..%2FDownloads%2Fer0d3s_release.bak.apk)Download | Install
 
 > [Flutter](https://flutter.dev/docs/get-started/install)
 

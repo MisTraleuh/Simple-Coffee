@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 
 class RegisterPage extends StatefulWidget {
+
   const RegisterPage({
     Key? key
   }) : super(key: key);

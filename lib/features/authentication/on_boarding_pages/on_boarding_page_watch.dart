@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 
-class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({
-    Key? key
+class OnBoardingPageWatch extends StatefulWidget {
+
+  const OnBoardingPageWatch({
+    Key? key,
   }) : super(key: key);
 
   @override
-  State<OnBoardingPage> createState() => _OnBoardingPageState();
+  State<OnBoardingPageWatch> createState() => _OnBoardingPageWatchState();
 }
 
-class _OnBoardingPageState extends State<OnBoardingPage> {
-
+class _OnBoardingPageWatchState extends State<OnBoardingPageWatch> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -28,6 +27,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             width: width,
             fit: BoxFit.cover,
           ),
+          Text('OnBoarding Page for Watch', style: TextStyle(color: Colors.white)),
           Padding(
             padding: EdgeInsets.only(top: height / 4),
             child: const Center(

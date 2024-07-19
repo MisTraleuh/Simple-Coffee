@@ -6,6 +6,7 @@ class SimpleCard extends StatelessWidget {
   final Color? startColor;
   final Color? endColor;
   final double? borderRadius;
+  final TextStyle? textStyle;
 
   const SimpleCard({
     Key? key,
@@ -14,6 +15,7 @@ class SimpleCard extends StatelessWidget {
     this.startColor,
     this.endColor,
     this.borderRadius,
+    this.textStyle,
   }) : super(key: key);
 
   @override
@@ -38,12 +40,7 @@ class SimpleCard extends StatelessWidget {
         children: <Widget>[
           Text(
             text,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600
-            ),
+            style: textStyle,
           ),
         ],
       ),
