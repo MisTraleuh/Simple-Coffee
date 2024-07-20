@@ -12,17 +12,17 @@ import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 **************************/
 import 'package:simple_coffee/shared/providers/profile_information.dart';
 
-class SignInStep2 extends StatefulWidget {
+class SignInStep3Tablet extends StatefulWidget {
 
-  const SignInStep2({
+  const SignInStep3Tablet({
     Key? key
   }) : super(key: key);
 
   @override
-  State<SignInStep2> createState() => _SignInStep2State();
+  State<SignInStep3Tablet> createState() => _SignInStep3TabletState();
 }
 
-class _SignInStep2State extends State<SignInStep2> {
+class _SignInStep3TabletState extends State<SignInStep3Tablet> {
 
   static const int minimum = 4800;
   static const int maximum = 5500;
@@ -57,7 +57,7 @@ class _SignInStep2State extends State<SignInStep2> {
                 height: height / 2.9,
                 width: width,
                 child: const CommonTopImage(
-                  imagePath: "assets/app/OnBoarding/SignIn/SigninStep2.png",
+                  imagePath: "assets/app/OnBoarding/SignIn/SigninStep3.png",
                 ),
               ),
               Positioned(
@@ -93,7 +93,7 @@ class _SignInStep2State extends State<SignInStep2> {
             child: SizedBox(
               height: height / 90,
               child: LinearProgressIndicator(
-                value: 0.66,
+                value: 1,
                 backgroundColor: Colors.grey,
                 valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 150, 93, 57)),
                 borderRadius: BorderRadius.circular(10),
@@ -104,25 +104,12 @@ class _SignInStep2State extends State<SignInStep2> {
           Padding(
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: SimpleTextButton(
-              labelText: "Password",
-              hintText: "Enter your password",
-              obscureText: true,
+              labelText: "Your Name",
+              hintText: "Enter your name",
+              obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformation.updatePassword(value);
-              },
-            ),
-          ),
-          SizedBox( height: height / 40.6 ),
-          Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
-            child: SimpleTextButton(
-              labelText: "Confirm Password",
-              hintText: "Confirm your password",
-              obscureText: true,
-              color: Theme.of(context).colorScheme.primary,
-              onChanged: (String value) {
-                profileInformation.updateConfirmPassword(value);
+                profileInformation.updateUsername(value);
               },
             ),
           ),
@@ -131,12 +118,12 @@ class _SignInStep2State extends State<SignInStep2> {
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/signin-s3');
+                Navigator.pushNamed(context, '/confirm-email');
               },
               child: SizedBox(
                 height: height / 15.24,
                 child: SimpleCard(
-                  text: "Next Step",
+                  text: "Confirmation",
                   borderRadius: 16,
                   color: Theme.of(context).colorScheme.primary,
                   startColor: const Color.fromARGB(255, 198, 124, 78),

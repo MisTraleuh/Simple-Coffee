@@ -12,17 +12,17 @@ import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 **************************/
 import 'package:simple_coffee/shared/providers/profile_information.dart';
 
-class SignInStep1 extends StatefulWidget {
+class SignInStep1Mobile extends StatefulWidget {
 
-  const SignInStep1({
+  const SignInStep1Mobile({
     Key? key
   }) : super(key: key);
 
   @override
-  State<SignInStep1> createState() => _SignInStep1State();
+  State<SignInStep1Mobile> createState() => _SignInStep1MobileState();
 }
 
-class _SignInStep1State extends State<SignInStep1> {
+class _SignInStep1MobileState extends State<SignInStep1Mobile> {
 
   static const int minimum = 4800;
   static const int maximum = 5500;

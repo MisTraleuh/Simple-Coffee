@@ -5,11 +5,11 @@ import 'package:provider/provider.dart';
 
 // PAGES IMPORTS
 import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page.dart';
-import 'package:simple_coffee/features/authentication/register.dart';
-import 'package:simple_coffee/features/authentication/login_in/login_page.dart';
-import 'package:simple_coffee/features/authentication/sign_in/sign_in_step1.dart';
-import 'package:simple_coffee/features/authentication/sign_in/sign_in_step2.dart';
-import 'package:simple_coffee/features/authentication/sign_in/sign_in_step3.dart';
+import 'package:simple_coffee/features/authentication/register_pages/register.dart';
+import 'package:simple_coffee/features/authentication/login_pages/login_page.dart';
+import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1.dart';
+import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2.dart';
+import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step3.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information.dart';
@@ -75,7 +75,6 @@ class _MyAppState extends State<MyApp> {
                 return OnBoardingPage(screenType: screenType);
               },
             ),
-            /*
         '/register': (context) => ResponsivePage(
               builder: (context, screenType) {
                 return RegisterPage(screenType: screenType);
@@ -101,7 +100,6 @@ class _MyAppState extends State<MyApp> {
                 return SignInStep3(screenType: screenType);
               },
             ),
-            */
       },
     );
   }

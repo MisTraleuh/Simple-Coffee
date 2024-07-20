@@ -12,17 +12,17 @@ import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 **************************/
 import 'package:simple_coffee/shared/providers/profile_information.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPageMobile extends StatefulWidget {
 
-  const LoginPage({
+  const LoginPageMobile({
     Key? key
   }) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPageMobile> createState() => _LoginPageMobileState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageMobileState extends State<LoginPageMobile> {
 
   static const int minimum = 4800;
   static const int maximum = 5500;
@@ -59,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   imagePath: "assets/app/OnBoarding/LoginPage.png",
                 ),
               ),
+              Text('OnBoarding Page for ${this.runtimeType.toString()}', style: TextStyle(color: Colors.white)),
               Positioned(
                 top: height / 20.6,
                 left: width / 12,

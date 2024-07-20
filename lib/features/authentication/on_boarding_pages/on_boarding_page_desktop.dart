@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 
 // RESPONSIVE TOOLS
-import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/shared/responsive/screen_info.dart';
-
 
 class OnBoardingPageDesktop extends StatefulWidget {
 

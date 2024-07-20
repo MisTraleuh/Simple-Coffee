@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPageWatch extends StatefulWidget {
 
-  const RegisterPage({
-    Key? key
+  const RegisterPageWatch({
+    Key? key,
   }) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<RegisterPageWatch> createState() => _RegisterPageWatchState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageWatchState extends State<RegisterPageWatch> {
 
  @override
   Widget build(BuildContext context) {

@@ -4,7 +4,10 @@ import 'package:flutter/widgets.dart';
 class ResponsivePage extends StatelessWidget {
   final Widget Function(BuildContext context, ScreenType screenType) builder;
 
-  const ResponsivePage({Key? key, required this.builder}) : super(key: key);
+  const ResponsivePage({
+    Key? key,
+    required this.builder
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

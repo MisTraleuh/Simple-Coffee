@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+// RESPONSIVE TOOLS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
 
 // RESPONSIVE PAGES
