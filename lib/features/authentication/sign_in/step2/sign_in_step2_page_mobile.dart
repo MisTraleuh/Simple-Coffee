@@ -35,6 +35,15 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
       0.65,
   ];
 
+  // FIRST BUTTON
+  static bool hasErrorFirstButton = false;
+  static bool isPassedFirstButton = false;
+
+  // SECOND BUTTON
+  static bool hasErrorSecondButton = false;
+  static bool isPassedSecondButton = false;
+
+  static bool isIdentical = false;
 
   @override
   void initState() {
@@ -70,7 +79,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
-                    size: 30,
+                    size: 40,
                   ),
                 ),
               ),
@@ -110,7 +119,14 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
                 profileInformation.updatePassword(value);
+                setState(() {
+                  if (isPassedFirstButton == false) isPassedFirstButton = true;
+                  hasErrorFirstButton = profileInformation.profile.password.length < 8;
+                });
+                hasErrorFirstButton = hasErrorFirstButton;
               },
+              hasError: hasErrorFirstButton,
+              fontSize: 16,
             ),
           ),
           SizedBox( height: height / 40.6 ),
@@ -123,7 +139,13 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
                 profileInformation.updateConfirmPassword(value);
+                setState(() {
+                  if (isPassedSecondButton == false) isPassedSecondButton = true;
+                  isIdentical = profileInformation.isPasswordIdentical();
+                  hasErrorSecondButton = !isIdentical;
+                });
               },
+              hasError: hasErrorSecondButton,
             ),
           ),
           SizedBox( height: height / 20.6 ),

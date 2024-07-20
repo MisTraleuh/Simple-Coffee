@@ -29,13 +29,13 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
           ),
           Text('OnBoarding Page for MOBILE', style: TextStyle(color: Colors.white)),
           Padding(
-            padding: EdgeInsets.only(top: height / 4),
+            padding: EdgeInsets.only(top: height * 0.25),
             child: const Center(
               child: Text(
                 "Coffee so good,",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 32,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -43,13 +43,13 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 2.9),
+            padding: EdgeInsets.only(top: height * 0.34),
             child: const Center(
               child: Text(
                 "your taste buds",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 32,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -57,13 +57,13 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 2.3),
+            padding: EdgeInsets.only(top: height * 0.45),
             child: const Center(
               child: Text(
                 "will love it.",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 32,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 1.8),
+            padding: EdgeInsets.only(top: height * 0.56),
             child: const Center(
               child: Text(
                 "The best grain, the finest roast, the",
@@ -84,7 +84,7 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 1.65),
+            padding: EdgeInsets.only(top: height * 0.6),
             child: const Center(
               child: Text(
                 "powerful flavor",
@@ -97,15 +97,20 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 1.25),
+            padding: EdgeInsets.only(top: height * 0.8),
             child: GestureDetector(
               child: Center(
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  height: MediaQuery.of(context).size.height / 12,
+                  width: width * 0.8,
+                  height: height * 0.08,
                   child: SimpleCard(
                     text: "Get Started",
                     color: Theme.of(context).colorScheme.primary,
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    )
                   ),
                 ),
               ),

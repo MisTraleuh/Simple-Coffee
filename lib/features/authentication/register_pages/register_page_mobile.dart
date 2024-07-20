@@ -29,18 +29,22 @@ class _RegisterPageMobileState extends State<RegisterPageMobile> {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 3),
+            padding: EdgeInsets.only(top: height * 0.4),
             child: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, "/login");
               },
               child: Center(
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  height: MediaQuery.of(context).size.height / 12,
+                  width: width * 0.8,
+                  height: height * 0.08,
                   child: SimpleCard(
                     text: "Login",
                     color: Theme.of(context).colorScheme.primary,
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
@@ -54,11 +58,15 @@ class _RegisterPageMobileState extends State<RegisterPageMobile> {
               },
               child: Center(
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  height: MediaQuery.of(context).size.height / 12,
+                  width: width * 0.8,
+                  height: height * 0.08,
                   child: SimpleCard(
                     text: "Sign Up",
                     color: Theme.of(context).colorScheme.primary,
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),

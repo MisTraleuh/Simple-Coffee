@@ -6,10 +6,10 @@ class ProfileInformation extends ChangeNotifier {
 
   User get profile => _profile;
 
-void updateEmail(String email) {
-  _profile = _profile.copyWith(email: email);
-  notifyListeners();
-}
+  void updateEmail(String email) {
+    _profile = _profile.copyWith(email: email);
+    notifyListeners();
+  }
 
   void updatePassword(String password) {
     _profile = _profile.copyWith(password: password);
@@ -19,6 +19,10 @@ void updateEmail(String email) {
   void updateConfirmPassword(String confirmedPassword) {
     _profile = _profile.copyWith(confirmedPassword: confirmedPassword);
     notifyListeners();
+  }
+
+  bool isPasswordIdentical() {
+    return _profile.password == _profile.confirmedPassword;
   }
 
   void updateUsername(String username) {

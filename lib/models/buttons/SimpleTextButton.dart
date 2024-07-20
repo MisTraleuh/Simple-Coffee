@@ -5,7 +5,9 @@ class SimpleTextButton extends StatefulWidget {
   final String hintText;
   final Color color;
   final void Function(String)? onChanged;
+  final bool? hasError;
   final bool obscureText;
+  final double? fontSize;
 
   const SimpleTextButton({
     Key? key,
@@ -14,6 +16,8 @@ class SimpleTextButton extends StatefulWidget {
     required this.color,
     required this.onChanged,
     required this.obscureText,
+    this.fontSize,
+    this.hasError,
   }) : super(key: key);
 
   @override
@@ -55,9 +59,9 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
       children: <Widget>[
         Text(
           widget.labelText,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.black,
-            fontSize: 12,
+            fontSize: widget.fontSize ?? 12,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -94,6 +98,14 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(
                 color: Colors.red,
+                width: 2,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 2,
               ),
             ),
             filled: true,
@@ -103,6 +115,7 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
             hintStyle: TextStyle(
               color: Colors.white.withOpacity(0.5),
             ),
+            errorText: widget.hasError == true ? "Invalid email" : null,
           ),
           cursorColor: Colors.white,
           onChanged: widget.onChanged,
