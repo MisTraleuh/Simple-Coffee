@@ -7,7 +7,6 @@ import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/features/authentication/login_pages/login_page_desktop.dart';
 import 'package:simple_coffee/features/authentication/login_pages/login_page_tablet.dart';
 import 'package:simple_coffee/features/authentication/login_pages/login_page_mobile.dart';
-import 'package:simple_coffee/features/authentication/login_pages/login_page_watch.dart';
 
 class LoginPage extends StatefulWidget {
   final ScreenType screenType;
@@ -31,8 +30,6 @@ class _LoginPageState extends State<LoginPage> {
         return const LoginPageTablet();
       case ScreenType.mobile:
         return const LoginPageMobile();
-      case ScreenType.watch:
-        return const LoginPageWatch();
       default:
         return const LoginPageMobile();
     }

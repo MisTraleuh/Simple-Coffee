@@ -7,7 +7,6 @@ import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2_page_desktop.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2_page_tablet.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2_page_mobile.dart';
-import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2_page_watch.dart';
 
 class SignInStep2 extends StatefulWidget {
   final ScreenType screenType;
@@ -32,8 +31,6 @@ class _SignInStep2State extends State<SignInStep2> {
         return const SignInStep2Tablet();
       case ScreenType.mobile:
         return const SignInStep2Mobile();
-      case ScreenType.watch:
-        return const SignInStep2Watch();
       default:
         return const SignInStep2Mobile();
     }

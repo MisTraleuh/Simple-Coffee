@@ -7,7 +7,6 @@ import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/features/authentication/register_pages/register_page_desktop.dart';
 import 'package:simple_coffee/features/authentication/register_pages/register_page_tablet.dart';
 import 'package:simple_coffee/features/authentication/register_pages/register_page_mobile.dart';
-import 'package:simple_coffee/features/authentication/register_pages/register_page_watch.dart';
 
 class RegisterPage extends StatefulWidget {
 
@@ -33,8 +32,6 @@ class _RegisterPageState extends State<RegisterPage> {
         return const RegisterPageTablet();
       case ScreenType.mobile:
         return const RegisterPageMobile();
-      case ScreenType.watch:
-        return const RegisterPageWatch();
       default:
         return const RegisterPageMobile();
     }

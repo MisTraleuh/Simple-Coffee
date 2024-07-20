@@ -26,14 +26,13 @@ class FormFactor {
   static double mobile = 400;
 }
 
-enum ScreenType { desktop, tablet, mobile, watch }
+enum ScreenType { desktop, tablet, mobile }
 
 ScreenType getFormFactor(BuildContext context) {
   double deviceWidth = MediaQuery.sizeOf(context).width;
 
   if (deviceWidth > FormFactor.desktop) return ScreenType.desktop;
   if (deviceWidth > FormFactor.tablet) return ScreenType.tablet;
-  if (deviceWidth > FormFactor.mobile) return ScreenType.mobile;
 
-  return ScreenType.watch;
+  return ScreenType.mobile;
 }

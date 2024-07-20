@@ -7,7 +7,6 @@ import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1_page_desktop.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1_page_tablet.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1_page_mobile.dart';
-import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1_page_watch.dart';
 
 class SignInStep1 extends StatefulWidget {
 
@@ -33,8 +32,6 @@ class _SignInStep1State extends State<SignInStep1> {
         return const SignInStep1Tablet();
       case ScreenType.mobile:
         return const SignInStep1Mobile();
-      case ScreenType.watch:
-        return const SignInStep1Watch();
       default:
         return const SignInStep1Mobile();
     }

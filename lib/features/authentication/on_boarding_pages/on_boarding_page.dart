@@ -7,7 +7,6 @@ import 'package:simple_coffee/shared/responsive/screen_type.dart';
 import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page_desktop.dart';
 import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page_tablet.dart';
 import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page_mobile.dart';
-import 'package:simple_coffee/features/authentication/on_boarding_pages/on_boarding_page_watch.dart';
 
 class OnBoardingPage extends StatefulWidget {
   final ScreenType screenType;
@@ -31,8 +30,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         return const OnBoardingPageTablet();
       case ScreenType.mobile:
         return const OnBoardingPageMobile();
-      case ScreenType.watch:
-        return const OnBoardingPageWatch();
       default:
         return const OnBoardingPageMobile();
     }

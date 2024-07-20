@@ -27,12 +27,6 @@ class ScreenInfo {
           fontSize: 32,
           fontWeight: FontWeight.bold
         );
-      case ScreenType.watch:
-        return const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold
-        );
       default: return const TextStyle(
         color: Colors.white,
         fontSize: 24,
