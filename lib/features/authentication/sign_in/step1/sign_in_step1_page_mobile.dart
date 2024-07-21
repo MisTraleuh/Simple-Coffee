@@ -7,6 +7,8 @@ import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
 import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 
+import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
+
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
@@ -125,13 +127,14 @@ class _SignInStep1MobileState extends State<SignInStep1Mobile> {
           SizedBox( height: height * 0.1 ),
           Padding(
             padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
-            child: GestureDetector(
+            child: ButtonPressableIfCondition(
               onTap: () {
-                if (isPassed == true && hasError == false) {
-                  Navigator.pushNamed(context, '/signin-s2');
-                }
+                Navigator.pushNamed(context, '/signin-s2');
               },
-              child: SizedBox(
+              condition: () {
+                return isPassed && !hasError;
+              },
+              childIfTrue: SizedBox(
                 height: height * 0.08,
                 child: SimpleCard(
                   text: "Next Step",
@@ -141,7 +144,19 @@ class _SignInStep1MobileState extends State<SignInStep1Mobile> {
                   endColor: const Color.fromARGB(255, 96, 60, 38),
                   textStyle: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                  ),
+                ),
+              ),
+              childIfFalse: SizedBox(
+                height: height * 0.08,
+                child: SimpleCard(
+                  text: "Next Step",
+                  borderRadius: 16,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  startColor: const Color.fromARGB(255, 198, 124, 78),
+                  endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
                   ),
                 ),
               ),

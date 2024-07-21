@@ -7,6 +7,8 @@ import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
 import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 
+import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
+
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
@@ -63,15 +65,15 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
           Stack(
             children: <Widget>[
               SizedBox(
-                height: height / 2.9,
+                height: height * 0.35,
                 width: width,
                 child: const CommonTopImage(
                   imagePath: "assets/app/OnBoarding/SignIn/SigninStep2.png",
                 ),
               ),
               Positioned(
-                top: height / 20.6,
-                left: width / 12,
+                top: height * 0.05,
+                left: width * 0.05,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -85,7 +87,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               ),
             ],
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           const Center(
             child: Text(
               "Sign Up",
@@ -96,11 +98,11 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SizedBox(
-              height: height / 90,
+              height: height * 0.01,
               child: LinearProgressIndicator(
                 value: 0.66,
                 backgroundColor: Colors.grey,
@@ -109,9 +111,9 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SimpleTextButton(
               labelText: "Password",
               hintText: "Enter your password",
@@ -129,9 +131,9 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               fontSize: 16,
             ),
           ),
-          SizedBox( height: height / 40.6 ),
+          SizedBox( height: height * 0.02 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SimpleTextButton(
               labelText: "Confirm Password",
               hintText: "Confirm your password",
@@ -148,21 +150,41 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               hasError: hasErrorSecondButton,
             ),
           ),
-          SizedBox( height: height / 20.6 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
-            child: GestureDetector(
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
+            child: ButtonPressableIfCondition(
               onTap: () {
                 Navigator.pushNamed(context, '/signin-s3');
               },
-              child: SizedBox(
-                height: height / 15.24,
+              condition: () {
+                return isPassedFirstButton && isPassedSecondButton &&
+                       !hasErrorFirstButton && !hasErrorSecondButton && isIdentical;
+              },
+              childIfTrue: SizedBox(
+                height: height * 0.08,
                 child: SimpleCard(
                   text: "Next Step",
                   borderRadius: 16,
                   color: Theme.of(context).colorScheme.primary,
                   startColor: const Color.fromARGB(255, 198, 124, 78),
                   endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              childIfFalse: SizedBox(
+                height: height * 0.08,
+                child: SimpleCard(
+                  text: "Next Step",
+                  borderRadius: 16,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  startColor: const Color.fromARGB(255, 198, 124, 78),
+                  endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
