@@ -54,15 +54,15 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
           Stack(
             children: <Widget>[
               SizedBox(
-                height: height / 2.9,
+                height: height * 0.35,
                 width: width,
                 child: const CommonTopImage(
                   imagePath: "assets/app/OnBoarding/SignIn/SigninStep3.png",
                 ),
               ),
               Positioned(
-                top: height / 20.6,
-                left: width / 12,
+                top: height * 0.05,
+                left: width * 0.05,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -70,13 +70,13 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
-                    size: 30,
+                    size: 40,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           const Center(
             child: Text(
               "Sign Up",
@@ -87,11 +87,11 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SizedBox(
-              height: height / 90,
+              height: height * 0.01,
               child: LinearProgressIndicator(
                 value: 1,
                 backgroundColor: Colors.grey,
@@ -100,9 +100,9 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SimpleTextButton(
               labelText: "Your Name",
               hintText: "Enter your name",
@@ -113,21 +113,25 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
               },
             ),
           ),
-          SizedBox( height: height / 20.6 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/confirm-email');
               },
               child: SizedBox(
-                height: height / 15.24,
+                height: height * 0.08,
                 child: SimpleCard(
                   text: "Confirmation",
                   borderRadius: 16,
                   color: Theme.of(context).colorScheme.primary,
                   startColor: const Color.fromARGB(255, 198, 124, 78),
                   endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  )
                 ),
               ),
             ),

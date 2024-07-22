@@ -36,5 +36,4 @@ class _SignInStep1State extends State<SignInStep1> {
         return const SignInStep1Mobile();
     }
   }
-
 }

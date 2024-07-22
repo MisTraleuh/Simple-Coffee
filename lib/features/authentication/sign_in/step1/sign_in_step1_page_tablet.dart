@@ -128,6 +128,10 @@ class _SignInStep1TabletState extends State<SignInStep1Tablet> {
                   color: Theme.of(context).colorScheme.primary,
                   startColor: const Color.fromARGB(255, 198, 124, 78),
                   endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18
+                  )
                 ),
               ),
             ),

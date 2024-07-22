@@ -70,7 +70,7 @@ class _SignInStep3TabletState extends State<SignInStep3Tablet> {
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
-                    size: 30,
+                    size: 40,
                   ),
                 ),
               ),

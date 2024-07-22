@@ -10,6 +10,8 @@ import 'package:simple_coffee/features/authentication/login_pages/login_page.dar
 import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step1.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step3.dart';
+import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
+import 'package:simple_coffee/features/product_pages/home.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information.dart';
@@ -98,6 +100,16 @@ class _MyAppState extends State<MyApp> {
         '/signin-s3': (context) => ResponsivePage(
               builder: (context, screenType) {
                 return SignInStep3(screenType: screenType);
+              },
+            ),
+        '/confirm-email': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return SignInConfirmation(screenType: screenType);
+              },
+            ),
+        '/home': (context) => ResponsivePage(
+              builder: (context, screenType) {
+                return Home(screenType: screenType);
               },
             ),
       },
