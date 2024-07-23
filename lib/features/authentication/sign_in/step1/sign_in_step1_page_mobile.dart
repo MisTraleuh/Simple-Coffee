@@ -120,6 +120,7 @@ class _SignInStep1MobileState extends State<SignInStep1Mobile> {
                   hasError = (profileInformation.profile.email.isEmpty) ? true : false;
                 });
               },
+              errorText: "Invalid email or phone number",
               fontSize: 16,
               hasError: hasError,
             ),

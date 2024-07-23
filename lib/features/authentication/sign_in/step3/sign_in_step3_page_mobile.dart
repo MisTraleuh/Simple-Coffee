@@ -7,6 +7,8 @@ import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
 import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 
+import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
+
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
@@ -35,6 +37,7 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
       0.65,
   ];
 
+  static bool _isPassed = false;
 
   @override
   void initState() {
@@ -93,39 +96,60 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
             child: SizedBox(
               height: height * 0.01,
               child: LinearProgressIndicator(
-                value: 1,
+                value: 0.66,
                 backgroundColor: Colors.grey,
                 valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 150, 93, 57)),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
-          SizedBox( height: height * 0.02 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
             padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SimpleTextButton(
               labelText: "Your Name",
               hintText: "Enter your name",
-              obscureText: false,
+              obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
+                if (_isPassed == false) {
+                  _isPassed = true;
+                }
                 profileInformation.updateUsername(value);
               },
+              fontSize: 16,
             ),
           ),
           SizedBox( height: height * 0.04 ),
           Padding(
             padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
-            child: GestureDetector(
+            child: ButtonPressableIfCondition(
+              condition: () {
+                return _isPassed;
+              },
               onTap: () {
                 Navigator.pushNamed(context, '/confirm-email');
               },
-              child: SizedBox(
+              childIfTrue: SizedBox(
                 height: height * 0.08,
                 child: SimpleCard(
                   text: "Confirmation",
                   borderRadius: 16,
                   color: Theme.of(context).colorScheme.primary,
+                  startColor: const Color.fromARGB(255, 198, 124, 78),
+                  endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  )
+                ),
+              ),
+              childIfFalse: SizedBox(
+                height: height * 0.08,
+                child: SimpleCard(
+                  text: "Confirmation",
+                  borderRadius: 16,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                   startColor: const Color.fromARGB(255, 198, 124, 78),
                   endColor: const Color.fromARGB(255, 96, 60, 38),
                   textStyle: const TextStyle(

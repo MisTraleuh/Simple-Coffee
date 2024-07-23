@@ -7,6 +7,8 @@ import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
 import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 
+import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
+
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
@@ -35,6 +37,7 @@ class _SignInStep3TabletState extends State<SignInStep3Tablet> {
       0.65,
   ];
 
+  static bool _isPassed = false;
 
   @override
   void initState() {
@@ -54,15 +57,15 @@ class _SignInStep3TabletState extends State<SignInStep3Tablet> {
           Stack(
             children: <Widget>[
               SizedBox(
-                height: height / 2.9,
+                height: height * 0.35,
                 width: width,
                 child: const CommonTopImage(
                   imagePath: "assets/app/OnBoarding/SignIn/SigninStep3.png",
                 ),
               ),
               Positioned(
-                top: height / 20.6,
-                left: width / 12,
+                top: height * 0.05,
+                left: width * 0.05,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -76,7 +79,7 @@ class _SignInStep3TabletState extends State<SignInStep3Tablet> {
               ),
             ],
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           const Center(
             child: Text(
               "Sign Up",
@@ -87,47 +90,72 @@ class _SignInStep3TabletState extends State<SignInStep3Tablet> {
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.02 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SizedBox(
-              height: height / 90,
+              height: height * 0.01,
               child: LinearProgressIndicator(
-                value: 1,
+                value: 0.66,
                 backgroundColor: Colors.grey,
                 valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 150, 93, 57)),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
-          SizedBox( height: height / 50.6 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
             child: SimpleTextButton(
               labelText: "Your Name",
               hintText: "Enter your name",
-              obscureText: false,
+              obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
+                if (_isPassed == false) {
+                  _isPassed = true;
+                }
                 profileInformation.updateUsername(value);
               },
+              fontSize: 16,
             ),
           ),
-          SizedBox( height: height / 20.6 ),
+          SizedBox( height: height * 0.04 ),
           Padding(
-            padding: EdgeInsets.only(left: width / 12, right: width / 12),
-            child: GestureDetector(
+            padding: EdgeInsets.only(left: width * 0.08, right: width * 0.08),
+            child: ButtonPressableIfCondition(
+              condition: () {
+                return _isPassed;
+              },
               onTap: () {
                 Navigator.pushNamed(context, '/confirm-email');
               },
-              child: SizedBox(
-                height: height / 15.24,
+              childIfTrue: SizedBox(
+                height: height * 0.08,
                 child: SimpleCard(
                   text: "Confirmation",
                   borderRadius: 16,
                   color: Theme.of(context).colorScheme.primary,
                   startColor: const Color.fromARGB(255, 198, 124, 78),
                   endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  )
+                ),
+              ),
+              childIfFalse: SizedBox(
+                height: height * 0.08,
+                child: SimpleCard(
+                  text: "Confirmation",
+                  borderRadius: 16,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  startColor: const Color.fromARGB(255, 198, 124, 78),
+                  endColor: const Color.fromARGB(255, 96, 60, 38),
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  )
                 ),
               ),
             ),

@@ -6,6 +6,7 @@ class SimpleTextButton extends StatefulWidget {
   final Color color;
   final void Function(String)? onChanged;
   final bool? hasError;
+  final String? errorText;
   final bool obscureText;
   final double? fontSize;
 
@@ -16,6 +17,7 @@ class SimpleTextButton extends StatefulWidget {
     required this.color,
     required this.onChanged,
     required this.obscureText,
+    this.errorText,
     this.fontSize,
     this.hasError,
   }) : super(key: key);
@@ -115,7 +117,7 @@ class _SimpleTextButtonState extends State<SimpleTextButton> {
             hintStyle: TextStyle(
               color: Colors.white.withOpacity(0.5),
             ),
-            errorText: widget.hasError == true ? "Invalid email" : null,
+            errorText: widget.hasError == true ? widget.errorText : null,
           ),
           cursorColor: Colors.white,
           onChanged: widget.onChanged,

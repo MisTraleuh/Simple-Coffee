@@ -128,6 +128,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
                 hasErrorFirstButton = hasErrorFirstButton;
               },
               hasError: hasErrorFirstButton,
+              errorText: "Password must be at least 8 characters",
               fontSize: 16,
             ),
           ),
@@ -147,6 +148,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
                   hasErrorSecondButton = !isIdentical;
                 });
               },
+              errorText: "Passwords do not match",
               hasError: hasErrorSecondButton,
             ),
           ),

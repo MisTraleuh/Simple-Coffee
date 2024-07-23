@@ -74,7 +74,7 @@ class _HomeMobileState extends State<HomeMobile> {
                           ),
                         ],
                       ),
-                      SizedBox(height: height * 0.04),
+                      SizedBox(height: height * 0.02),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[800],
