@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wave/wave.dart';
-import 'package:wave/config.dart';
-import 'dart:math';
 import 'package:provider/provider.dart';
-import 'package:simple_coffee/models/buttons/SimpleButton.dart';
-import 'package:simple_coffee/models/specials/CommonTopImage.dart';
-import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
+
+import "package:simple_coffee/models/cards/ImageCard.dart";
 
 /**************************
 *    PROVIDERS IMPORTS    *
@@ -41,9 +37,9 @@ class _HomeMobileState extends State<HomeMobile> {
                 width: width,
                 color: Colors.black,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.08, vertical: height * 0.1),
+                  padding: EdgeInsets.only(right: width * 0.08, left: width * 0.08, top: height * 0.1),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,6 +81,7 @@ class _HomeMobileState extends State<HomeMobile> {
                             SizedBox(width: width * 0.02),
                             const Icon(Icons.search, color: Colors.white),
                             SizedBox(width: width * 0.02),
+                            
                             const Expanded(
                               child: TextField(
                                 decoration: InputDecoration(
@@ -95,19 +92,64 @@ class _HomeMobileState extends State<HomeMobile> {
                               ),
                             ),
                             Container(
+                              height: height * 0.05,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: const Padding(
                                 padding: EdgeInsets.all(10.0),
-                                child: Icon(Icons.filter_list, color: Colors.white),
+                                child: Icon(
+                                  Icons.filter_list, color: Colors.white),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.25, right: width * 0.08, left: width * 0.08),
+                child: Center(
+                  child: ImageCard(
+                    imagePath: "assets/app/products_assets/coffee_promo.png",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Text(
+                            'Promo',
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          child: const Text(
+                            'Buy one get\none FREE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 18),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

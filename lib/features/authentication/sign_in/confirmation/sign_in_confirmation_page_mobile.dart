@@ -3,9 +3,11 @@ import 'package:wave/wave.dart';
 import 'package:wave/config.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
 import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
+import 'package:simple_coffee/models/buttons/MultiInputField.dart';
 
 import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
 
@@ -115,126 +117,75 @@ class _SignInConfirmationMobileState extends State<SignInConfirmationMobile> {
               ),
             ),
           ),
-          SizedBox( height: height * 0.02 ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+          SizedBox( height: height * 0.05 ),
+          Center(
+            child:
+             Padding(
+              padding: EdgeInsets.only(left: width * 0.02, right: width * 0.02),
+              child: MultiInputField(
+                numberOfFields: 6,
+                fieldColor: Theme.of(context).colorScheme.primary,
+                fieldWidth: width * 0.1,
+                fieldHeight: height * 0.1,
+                spaceBetweenFields: width * 0.01,
+                onlyNumbers: true,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                ],
+                onChanged: (String value, int index) {
+                  if (value.length > 1) {
+                    value = value.substring(value.length - 1);
+                  }
+                  if (index == 0) {
                     if (_isPassedFirstButton == false) {
                       setState(() {
                         _isPassedFirstButton = true;
                       });
                     }
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.02),
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+                  } else if (index == 1) {
                     if (_isPassedSecondButton == false) {
                       setState(() {
                         _isPassedSecondButton = true;
                       });
                     }
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.02),
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+                  } else if (index == 2) {
                     if (_isPassedThirdButton == false) {
                       setState(() {
                         _isPassedThirdButton = true;
                       });
                     }
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.02),
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+                  } else if (index == 3) {
                     if (_isPassedFourthButton == false) {
                       setState(() {
                         _isPassedFourthButton = true;
                       });
                     }
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.02),
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+                  } else if (index == 4) {
                     if (_isPassedFifthButton == false) {
                       setState(() {
                         _isPassedFifthButton = true;
                       });
                     }
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.02),
-              SizedBox(
-                width: width * 0.1,
-                height: height * 0.1,
-                child: SimpleTextButton(
-                  labelText: "",
-                  hintText: "",
-                  obscureText: false,
-                  color: Theme.of(context).colorScheme.primary,
-                  onChanged: (String value) {
+                  } else if (index == 5) {
                     if (_isPassedSixthButton == false) {
                       setState(() {
                         _isPassedSixthButton = true;
                       });
                     }
-                  },
-                ),
+                  }
+                },
               ),
-            ],
+            ),
           ),
-          SizedBox( height: height * 0.05 ),
           Padding(
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: ButtonPressableIfCondition(
               onTap: () {
-                Navigator.pushNamed(context, '/home');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/home',
+                  (Route<dynamic> route) => false,
+                );
               },
               condition: () {
                 return _isPassedFirstButton && _isPassedSecondButton && _isPassedThirdButton && _isPassedFourthButton && _isPassedFifthButton && _isPassedSixthButton;
