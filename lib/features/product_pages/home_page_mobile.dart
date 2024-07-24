@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import "package:simple_coffee/models/cards/ImageCard.dart";
+import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 
 class HomeMobile extends StatefulWidget {
 
@@ -171,12 +172,28 @@ class _HomeMobileState extends State<HomeMobile> {
                                   ],
                                 ),
                               ),
-
                             ],
                           ),
                         ],
                       ),
                     ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.47, ),
+                child: Center(
+                  child: ButtonsRow(
+                    buttonNames: const ["Cappuccino", "Machiato", "Latte", "Espresso", "Americano", "Mocha"],
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    inactiveColor: Colors.white70,
+                    borderRadius: 10,
+                    onButtonPressed: (String name) {
+                      print(name);
+                    },
+                    isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
+                    isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
+                    buttonSize: const Size(100, 60),
                   ),
                 ),
               ),
