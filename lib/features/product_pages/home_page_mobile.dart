@@ -24,7 +24,6 @@ class _HomeMobileState extends State<HomeMobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -35,7 +34,16 @@ class _HomeMobileState extends State<HomeMobile> {
               Container(
                 height: height * 0.35,
                 width: width,
-                color: Colors.black,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF131313),
+                      Color(0xFF313131),
+                    ],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                ),
                 child: Padding(
                   padding: EdgeInsets.only(right: width * 0.08, left: width * 0.08, top: height * 0.1),
                   child: Column(
@@ -111,44 +119,48 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: height * 0.25, right: width * 0.08, left: width * 0.08),
+                padding: EdgeInsets.only(top: height * 0.26, right: width * 0.08, left: width * 0.08),
                 child: Center(
-                  child: ImageCard(
-                    imagePath: "assets/app/products_assets/coffee_promo.png",
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Text(
-                            'Promo',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
-                          child: const Text(
-                            'Buy one get\none FREE',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 18),
-                                ),
-                              ],
+                  child: SizedBox(
+                    height: height * 0.2,
+                    width: width,
+                    child: ImageCard(
+                      imagePath: "assets/app/products_assets/coffee_promo.png",
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Text(
+                              'Promo',
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          Container(
+                            child: const Text(
+                              'Buy one get\none FREE',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 18),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
           secondary: secondaryColor,
         ),
       ),
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
         '/': (context) => ResponsivePage(
               builder: (context, screenType) {
