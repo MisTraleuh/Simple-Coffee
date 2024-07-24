@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import "package:simple_coffee/models/cards/ImageCard.dart";
-
-/**************************
-*    PROVIDERS IMPORTS    *
-**************************/
-import 'package:simple_coffee/shared/providers/profile_information.dart';
 
 class HomeMobile extends StatefulWidget {
 
@@ -142,22 +136,43 @@ class _HomeMobileState extends State<HomeMobile> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          Container(
-                            child: const Text(
-                              'Buy one get\none FREE',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                shadows: [
-                                  Shadow(
-                                    color: Colors.black,
-                                    blurRadius: 5,
-                                    offset: Offset(0, 18),
-                                  ),
-                                ],
+                          Stack(
+                            children: [
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 30,
+                                child: Container(
+                                  color: Colors.black,
+                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                                ),
                               ),
-                            ),
+                              Positioned(
+                                left: 0,
+                                right: 25,
+                                bottom: 2,
+                                child: Container(
+                                  color: Colors.black,
+                                  padding: const EdgeInsets.symmetric(vertical: 8),
+                                ),
+                              ),
+                              const Text(
+                                'Buy one get\none FREE',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 5),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                            ],
                           ),
                         ],
                       ),
