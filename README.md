@@ -25,3 +25,13 @@ $ flutter pub get
 # Start the app
 $ flutter run
 ```
+
+## 📲 Build On Phone
+
+```bash
+$ ./build.bat
+```
+
+## 📝 License
+
+This project is under the MIT license. See the [LICENSE](./LICENSE) for more information.
