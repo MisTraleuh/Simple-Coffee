@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import "package:simple_coffee/models/cards/ImageCard.dart";
 import "package:simple_coffee/models/buttons/ButtonsRow.dart";
+import "package:simple_coffee/models/cards/CustomCard.dart";
 
 class HomeMobile extends StatefulWidget {
 
@@ -14,6 +15,24 @@ class HomeMobile extends StatefulWidget {
 }
 
 class _HomeMobileState extends State<HomeMobile> {
+
+  final List<Map<String, String>> products = [
+    {
+      "imagePath": "assets/app/products_assets/cappuccinos/cappuccino_1.png",
+      "rating": "4.5",
+      "nameType": "Cappuccino",
+      "description": "With Milk.",
+      "price": "3.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/cappuccinos/cappuccino_2.png",
+      "rating": "4.7",
+      "nameType": "Latte",
+      "description": "With Soy Milk.",
+      "price": "4.50",
+    },
+    // Ajoutez plus de produits ici
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +200,7 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: height * 0.47, ),
+                padding: EdgeInsets.only(top: height * 0.47),
                 child: Center(
                   child: ButtonsRow(
                     buttonNames: const ["Cappuccino", "Machiato", "Latte", "Espresso", "Americano", "Mocha"],
@@ -194,6 +213,35 @@ class _HomeMobileState extends State<HomeMobile> {
                     isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
                     isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
                     buttonSize: const Size(100, 60),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.55, right: width * 0.08, left: width * 0.08),
+                child: SizedBox(
+                  height: height * 0.45,
+                  width: width,
+                  child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 18.0,
+                      crossAxisSpacing: 30.0,
+                      childAspectRatio: 0.65,
+                    ),
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        //color: Colors.yellow,
+                        child: CustomCard(
+                          imagePath: products[index]['imagePath']!,
+                          rating: products[index]['rating']!,
+                          nameType: products[index]['nameType']!,
+                          description: products[index]['description']!,
+                          price: products[index]['price']!,
+                          buttonColor: Theme.of(context).colorScheme.primary,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

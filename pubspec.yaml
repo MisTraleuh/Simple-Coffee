@@ -32,6 +32,7 @@ flutter:
     - assets/app/OnBoarding/
     - assets/app/OnBoarding/SignIn/
     - assets/app/products_assets/
+    - assets/app/products_assets/cappuccinos/
 
 linter:
   rules:
