@@ -29,4 +29,9 @@ class ProfileInformation extends ChangeNotifier {
     _profile = _profile.copyWith(username: username);
     notifyListeners();
   }
+
+  void updateIsAlreadyRegistered(bool isAlreadyRegistered) {
+    _profile = _profile.copyWith(isAlreadyRegistered: isAlreadyRegistered);
+    notifyListeners();
+  }
 }

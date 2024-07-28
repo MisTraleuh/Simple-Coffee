@@ -181,6 +181,7 @@ class _SignInConfirmationMobileState extends State<SignInConfirmationMobile> {
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: ButtonPressableIfCondition(
               onTap: () {
+                profileInformation.updateIsAlreadyRegistered(true);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   '/home',
