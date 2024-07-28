@@ -21,7 +21,7 @@ class ImageCard extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
