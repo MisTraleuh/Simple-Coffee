@@ -11,7 +11,7 @@ import 'package:simple_coffee/features/authentication/sign_in/step1/sign_in_step
 import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step2.dart';
 import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step3.dart';
 import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
-import 'package:simple_coffee/features/product_pages/home.dart';
+import 'package:simple_coffee/features/product_pages/home_page/home.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information.dart';

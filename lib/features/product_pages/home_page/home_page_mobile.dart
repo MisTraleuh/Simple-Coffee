@@ -4,6 +4,8 @@ import "package:simple_coffee/models/cards/ImageCard.dart";
 import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
 
+import "package:simple_coffee/data/products_lists.dart";
+
 class HomeMobile extends StatefulWidget {
 
   const HomeMobile({
@@ -16,23 +18,7 @@ class HomeMobile extends StatefulWidget {
 
 class _HomeMobileState extends State<HomeMobile> {
 
-  final List<Map<String, String>> products = [
-    {
-      "imagePath": "assets/app/products_assets/cappuccinos/cappuccino_1.png",
-      "rating": "4.5",
-      "nameType": "Cappuccino",
-      "description": "With Milk.",
-      "price": "3.99",
-    },
-    {
-      "imagePath": "assets/app/products_assets/cappuccinos/cappuccino_2.png",
-      "rating": "4.7",
-      "nameType": "Latte",
-      "description": "With Soy Milk.",
-      "price": "4.50",
-    },
-    // Ajoutez plus de produits ici
-  ];
+  String selectedButton = "Cappuccinos";
 
   @override
   Widget build(BuildContext context) {
@@ -203,12 +189,14 @@ class _HomeMobileState extends State<HomeMobile> {
                 padding: EdgeInsets.only(top: height * 0.47),
                 child: Center(
                   child: ButtonsRow(
-                    buttonNames: const ["Cappuccino", "Machiato", "Latte", "Espresso", "Americano", "Mocha"],
+                    buttonNames: productsName,
                     activeColor: Theme.of(context).colorScheme.primary,
                     inactiveColor: Colors.white70,
                     borderRadius: 10,
                     onButtonPressed: (String name) {
-                      print(name);
+                      setState(() {
+                        selectedButton = name;
+                      });
                     },
                     isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
                     isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
@@ -224,22 +212,19 @@ class _HomeMobileState extends State<HomeMobile> {
                   child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 18.0,
-                      crossAxisSpacing: 30.0,
-                      childAspectRatio: 0.65,
+                      mainAxisSpacing: 15.0,
+                      crossAxisSpacing: 25.0,
+                      childAspectRatio: 0.60,
                     ),
-                    itemCount: products.length,
+                    itemCount: products[selectedButton]!.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        //color: Colors.yellow,
-                        child: CustomCard(
-                          imagePath: products[index]['imagePath']!,
-                          rating: products[index]['rating']!,
-                          nameType: products[index]['nameType']!,
-                          description: products[index]['description']!,
-                          price: products[index]['price']!,
-                          buttonColor: Theme.of(context).colorScheme.primary,
-                        ),
+                      return CustomCard(
+                        imagePath: products[selectedButton]![index]['imagePath']!,
+                        rating: products[selectedButton]![index]['rating']!,
+                        nameType: products[selectedButton]![index]['nameType']!,
+                        description: products[selectedButton]![index]['description']!,
+                        price: products[selectedButton]![index]['price']!,
+                        buttonColor: Theme.of(context).colorScheme.primary,
                       );
                     },
                   ),
