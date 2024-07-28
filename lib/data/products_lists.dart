@@ -100,6 +100,109 @@ final Map<String, List<Map<String, String>>> products = {
       "price": "3.99",
     },
   ],
+
+  /*******************************
+  *          EXPRESSOS           *
+  *******************************/
+  "Expressos": [
+    {
+      "imagePath": "assets/app/products_assets/expressos/expresso_1.png",
+      "rating": "4.5",
+      "nameType": "Expresso",
+      "description": "With Milk.",
+      "price": "3.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/expressos/expresso_2.png",
+      "rating": "4.7",
+      "nameType": "Expresso",
+      "description": "With Soy Milk.",
+      "price": "4.50",
+    },
+    {
+      "imagePath": "assets/app/products_assets/expressos/expresso_3.png",
+      "rating": "4.5",
+      "nameType": "Expresso",
+      "description": "With Almond Milk.",
+      "price": "4.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/expressos/expresso_4.png",
+      "rating": "4.6",
+      "nameType": "Expresso",
+      "description": "With Oat Milk.",
+      "price": "3.99",
+    },
+  ],
+
+  /*******************************
+   *         AMERICANOS          *
+  *******************************/
+  "Americanos": [
+    {
+      "imagePath": "assets/app/products_assets/americanos/americano_1.png",
+      "rating": "4.5",
+      "nameType": "Americano",
+      "description": "With Milk.",
+      "price": "3.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/americanos/americano_2.png",
+      "rating": "4.7",
+      "nameType": "Americano",
+      "description": "With Soy Milk.",
+      "price": "4.50",
+    },
+    {
+      "imagePath": "assets/app/products_assets/americanos/americano_3.png",
+      "rating": "4.5",
+      "nameType": "Americano",
+      "description": "With Almond Milk.",
+      "price": "4.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/americanos/americano_4.png",
+      "rating": "4.6",
+      "nameType": "Americano",
+      "description": "With Oat Milk.",
+      "price": "3.99",
+    },
+  ],
+
+  /*******************************
+   *           MOCHAS            *
+  *******************************/
+  "Mochas": [
+    {
+      "imagePath": "assets/app/products_assets/mochas/mocha_1.png",
+      "rating": "4.5",
+      "nameType": "Mocha",
+      "description": "With Milk.",
+      "price": "3.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/mochas/mocha_2.png",
+      "rating": "4.7",
+      "nameType": "Mocha",
+      "description": "With Soy Milk.",
+      "price": "4.50",
+    },
+    {
+      "imagePath": "assets/app/products_assets/mochas/mocha_3.png",
+      "rating": "4.5",
+      "nameType": "Mocha",
+      "description": "With Almond Milk.",
+      "price": "4.99",
+    },
+    {
+      "imagePath": "assets/app/products_assets/mochas/mocha_4.png",
+      "rating": "4.6",
+      "nameType": "Mocha",
+      "description": "With Oat Milk.",
+      "price": "3.99",
+    },
+  ],
+
 };
 
-const List<String> productsName =  ["Cappuccinos", "Machiatos", "Lattes", "Espressos", "Americanos", "Mochas"];
+const List<String> productsName =  ["Cappuccinos", "Machiatos", "Lattes", "Expressos", "Americanos", "Mochas"];

@@ -35,6 +35,9 @@ flutter:
     - assets/app/products_assets/cappuccinos/
     - assets/app/products_assets/machiatos/
     - assets/app/products_assets/lattes/
+    - assets/app/products_assets/americanos/
+    - assets/app/products_assets/expressos/
+    - assets/app/products_assets/mochas/
 
 linter:
   rules:

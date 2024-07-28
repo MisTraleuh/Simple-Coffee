@@ -34,6 +34,7 @@ class CustomCard extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
+                  height: 200,
                   width: double.infinity,
                   child: Image.asset(imagePath, fit: BoxFit.cover),
                 ),
