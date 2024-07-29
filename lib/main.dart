@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
             secondary: secondaryColor,
           ),
         ),
-        home: const InitialScreen(),
+        home:  const InitialScreen(),
         routes: {
           '/onboarding': (context) => ResponsivePage(
                 builder: (context, screenType) {

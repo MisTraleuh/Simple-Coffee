@@ -33,7 +33,7 @@ class CustomCard extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
-                  height: 200,
+                  height: 100,
                   width: double.infinity,
                   child: Image.asset(imagePath, fit: BoxFit.cover),
                 ),
@@ -70,7 +70,7 @@ class CustomCard extends StatelessWidget {
                     nameType,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 22,
                     ),
                   ),
                   const SizedBox(height: 4),
