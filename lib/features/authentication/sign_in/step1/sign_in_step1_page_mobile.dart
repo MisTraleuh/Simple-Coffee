@@ -12,7 +12,7 @@ import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/shared/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 class SignInStep1Mobile extends StatefulWidget {
 
@@ -49,7 +49,8 @@ class _SignInStep1MobileState extends State<SignInStep1Mobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformationCache>(context, listen: true);
+    profileInformation.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -113,11 +114,11 @@ class _SignInStep1MobileState extends State<SignInStep1Mobile> {
               obscureText: false,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformation.updateEmail(value);
+                profileInformation.updateEmail(value, true);
                 setState(() {
                   if (isPassed == false) isPassed = true;
                   // REGEX AND CHECK IF EMAIL IS VALID ON PROFILE INFORMATION
-                  hasError = (profileInformation.profile.email.isEmpty) ? true : false;
+                  hasError = (profileInformation.userPreferences.email.isEmpty) ? true : false;
                 });
               },
               errorText: "Invalid email or phone number",

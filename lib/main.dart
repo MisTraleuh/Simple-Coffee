@@ -13,9 +13,10 @@ import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step
 import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
 import 'package:simple_coffee/features/product_pages/home_pages/home.dart';
 import 'package:simple_coffee/features/product_pages/details_product_pages/details_product.dart';
+import 'package:simple_coffee/shared/immutables/user_cache.dart';
 
 // PROVIDERS IMPORTS
-import 'package:simple_coffee/shared/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
@@ -28,7 +29,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ProfileInformation()),
+        ChangeNotifierProvider(create: (context) => ProfileInformationCache()),
       ],
       child: const MyApp(),
     ),
@@ -63,61 +64,98 @@ class _MyAppState extends State<MyApp> {
 
     final ThemeData theme = ThemeData();
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(
-          primary: primaryColor,
-          secondary: secondaryColor,
+    return ChangeNotifierProvider(
+      create: (context) => ProfileInformationCache()..loadUser(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme.copyWith(
+            primary: primaryColor,
+            secondary: secondaryColor,
+          ),
         ),
+        home: const InitialScreen(),
+        routes: {
+          '/': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return OnBoardingPage(screenType: screenType);
+                },
+              ),
+          '/register': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return RegisterPage(screenType: screenType);
+                },
+              ),
+          '/login': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return LoginPage(screenType: screenType);
+                },
+              ),
+          '/signin-s1': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return SignInStep1(screenType: screenType);
+                },
+              ),
+          '/signin-s2': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return SignInStep2(screenType: screenType);
+                },
+              ),
+          '/signin-s3': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return SignInStep3(screenType: screenType);
+                },
+              ),
+          '/confirm-email': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return SignInConfirmation(screenType: screenType);
+                },
+              ),
+          '/home': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return Home(screenType: screenType);
+                },
+              ),
+          '/details-product': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return DetailsProduct(screenType: screenType);
+                },
+              ),
+        },
       ),
-      initialRoute: '/home',
-      routes: {
-        '/': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return OnBoardingPage(screenType: screenType);
-              },
-            ),
-        '/register': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return RegisterPage(screenType: screenType);
-              },
-            ),
-        '/login': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return LoginPage(screenType: screenType);
-              },
-            ),
-        '/signin-s1': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return SignInStep1(screenType: screenType);
-              },
-            ),
-        '/signin-s2': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return SignInStep2(screenType: screenType);
-              },
-            ),
-        '/signin-s3': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return SignInStep3(screenType: screenType);
-              },
-            ),
-        '/confirm-email': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return SignInConfirmation(screenType: screenType);
-              },
-            ),
-        '/home': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return Home(screenType: screenType);
-              },
-            ),
-        '/details-product': (context) => ResponsivePage(
-              builder: (context, screenType) {
-                return DetailsProduct(screenType: screenType);
-              },
-            ),
+    );
+  }
+}
+
+class InitialScreen extends StatelessWidget {
+
+  const InitialScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final profileInformationCache = Provider.of<ProfileInformationCache>(context, listen: false);
+
+    return FutureBuilder<bool>(
+      future: profileInformationCache.isAlreadyRegistered(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        } else {
+          if (snapshot.data == true) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.pushReplacementNamed(context, '/home');
+            });
+          } else {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.pushReplacementNamed(context, '/');
+            });
+          }
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
       },
     );
   }

@@ -12,7 +12,7 @@ import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/shared/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 class SignInStep2Mobile extends StatefulWidget {
 
@@ -56,7 +56,8 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformationCache>(context, listen: true);
+    profileInformation.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -71,6 +72,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
                   imagePath: "assets/app/OnBoarding/SignIn/SigninStep2.png",
                 ),
               ),
+              Text("This is here: ${profileInformation.userPreferences.toString()}", style: const TextStyle(color: Colors.white)),
               Positioned(
                 top: height * 0.05,
                 left: width * 0.05,
@@ -120,10 +122,10 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformation.updatePassword(value);
+                profileInformation.updatePassword(value, true);
                 setState(() {
                   if (isPassedFirstButton == false) isPassedFirstButton = true;
-                  hasErrorFirstButton = profileInformation.profile.password.length < 8;
+                  hasErrorFirstButton = profileInformation.userPreferences.password.length < 8;
                 });
                 hasErrorFirstButton = hasErrorFirstButton;
               },
@@ -141,7 +143,7 @@ class _SignInStep2MobileState extends State<SignInStep2Mobile> {
               obscureText: true,
               color: Theme.of(context).colorScheme.primary,
               onChanged: (String value) {
-                profileInformation.updateConfirmPassword(value);
+                profileInformation.updateConfirmPassword(value, true);
                 setState(() {
                   if (isPassedSecondButton == false) isPassedSecondButton = true;
                   isIdentical = profileInformation.isPasswordIdentical();

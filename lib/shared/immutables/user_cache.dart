@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class UserPreferences {
   final String email;
@@ -67,4 +68,31 @@ class UserPreferences {
   @override
   String toString() =>
       'User: {email: $email, password: $password, confirmedPassword: $confirmedPassword, username: $username, isAlreadyRegistered: $isAlreadyRegistered}';
+
+ static Future<void> saveUserPreferences(UserPreferences userPreferences) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', userPreferences.email);
+    await prefs.setString('password', userPreferences.password);
+    await prefs.setString('confirmedPassword', userPreferences.confirmedPassword);
+    await prefs.setString('username', userPreferences.username);
+    await prefs.setBool('isAlreadyRegistered', userPreferences.isAlreadyRegistered);
+  }
+
+  static Future<UserPreferences> getUserPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('email') ?? '';
+    final password = prefs.getString('password') ?? '';
+    final confirmedPassword = prefs.getString('confirmedPassword') ?? '';
+    final username = prefs.getString('username') ?? '';
+    final isAlreadyRegistered = prefs.getBool('isAlreadyRegistered') ?? false;
+
+    return UserPreferences(
+      email: email,
+      password: password,
+      confirmedPassword: confirmedPassword,
+      username: username,
+      isAlreadyRegistered: isAlreadyRegistered,
+    );
+  }
+
 }

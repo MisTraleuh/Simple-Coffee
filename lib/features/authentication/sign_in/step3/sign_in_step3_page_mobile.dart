@@ -12,7 +12,7 @@ import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/shared/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 class SignInStep3Mobile extends StatefulWidget {
 
@@ -48,7 +48,8 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformationCache>(context, listen: true);
+    profileInformation.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -115,7 +116,7 @@ class _SignInStep3MobileState extends State<SignInStep3Mobile> {
                 if (_isPassed == false) {
                   _isPassed = true;
                 }
-                profileInformation.updateUsername(value);
+                profileInformation.updateUsername(value, true);
               },
               fontSize: 16,
             ),

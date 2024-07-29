@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
+
+import 'package:provider/provider.dart';
+
 class OnBoardingPageMobile extends StatefulWidget {
 
   const OnBoardingPageMobile({
@@ -14,6 +18,8 @@ class OnBoardingPageMobile extends StatefulWidget {
 class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
   @override
   Widget build(BuildContext context) {
+    final profileInformation = Provider.of<ProfileInformationCache>(context, listen: true);
+    profileInformation.loadUser();
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
 
@@ -27,7 +33,7 @@ class _OnBoardingPageMobileState extends State<OnBoardingPageMobile> {
             width: width,
             fit: BoxFit.cover,
           ),
-          Text('OnBoarding Page for MOBILE', style: TextStyle(color: Colors.white)),
+          Text('This is here: ${profileInformation.userPreferences.toString()}', style: TextStyle(color: Colors.white)),
           Padding(
             padding: EdgeInsets.only(top: height * 0.25),
             child: const Center(

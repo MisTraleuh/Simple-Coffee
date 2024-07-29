@@ -1,3 +1,5 @@
+import "dart:io";
+
 import 'package:flutter/material.dart';
 
 import "package:simple_coffee/models/cards/ImageCard.dart";
@@ -5,6 +7,9 @@ import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
 
 import "package:simple_coffee/data/products_lists.dart";
+
+import 'package:provider/provider.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 class HomeMobile extends StatefulWidget {
 
@@ -19,9 +24,17 @@ class HomeMobile extends StatefulWidget {
 class _HomeMobileState extends State<HomeMobile> {
 
   String selectedButton = "Cappuccinos";
+  bool _passed = false;
 
   @override
   Widget build(BuildContext context) {
+    final profileInformationCache = Provider.of<ProfileInformationCache>(context);
+
+    if (!_passed) {
+      profileInformationCache.loadUser();
+      _passed = true;
+    }
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -74,8 +87,8 @@ class _HomeMobileState extends State<HomeMobile> {
                             ],
                           ),
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
-                          ),
+                              backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
+                            ),
                         ],
                       ),
                       SizedBox(height: height * 0.02),

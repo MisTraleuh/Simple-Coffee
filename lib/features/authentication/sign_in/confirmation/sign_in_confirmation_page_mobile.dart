@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:simple_coffee/models/buttons/SimpleButton.dart';
 import 'package:simple_coffee/models/specials/CommonTopImage.dart';
-import 'package:simple_coffee/models/buttons/SimpleTextButton.dart';
 import 'package:simple_coffee/models/buttons/MultiInputField.dart';
 
 import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
@@ -14,7 +13,7 @@ import 'package:simple_coffee/models/buttons/ButtonPressableIfCondition.dart';
 /**************************
 *    PROVIDERS IMPORTS    *
 **************************/
-import 'package:simple_coffee/shared/providers/profile_information.dart';
+import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 
 class SignInConfirmationMobile extends StatefulWidget {
 
@@ -55,7 +54,8 @@ class _SignInConfirmationMobileState extends State<SignInConfirmationMobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final profileInformation = Provider.of<ProfileInformation>(context, listen: true);
+    final profileInformation = Provider.of<ProfileInformationCache>(context, listen: true);
+    profileInformation.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -126,7 +126,7 @@ class _SignInConfirmationMobileState extends State<SignInConfirmationMobile> {
                 numberOfFields: 6,
                 fieldColor: Theme.of(context).colorScheme.primary,
                 fieldWidth: width * 0.1,
-                fieldHeight: height * 0.1,
+                fieldHeight: height * 0.15,
                 spaceBetweenFields: width * 0.01,
                 onlyNumbers: true,
                 inputFormatters: [
@@ -181,7 +181,7 @@ class _SignInConfirmationMobileState extends State<SignInConfirmationMobile> {
             padding: EdgeInsets.only(left: width / 12, right: width / 12),
             child: ButtonPressableIfCondition(
               onTap: () {
-                profileInformation.updateIsAlreadyRegistered(true);
+                profileInformation.updateIsAlreadyRegistered(true, true);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   '/home',
