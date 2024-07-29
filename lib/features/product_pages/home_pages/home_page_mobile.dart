@@ -1,5 +1,3 @@
-import "dart:io";
-
 import 'package:flutter/material.dart';
 
 import "package:simple_coffee/models/cards/ImageCard.dart";
