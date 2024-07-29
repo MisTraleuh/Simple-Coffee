@@ -1,13 +1,13 @@
+import 'package:shared_preferences/shared_preferences.dart';
 
-class User {
-
+class UserPreferences {
   final String email;
   final String password;
   final String confirmedPassword;
   final String username;
   final bool isAlreadyRegistered;
 
-  const User({
+  const UserPreferences({
     required this.email,
     required this.password,
     required this.confirmedPassword,
@@ -15,21 +15,20 @@ class User {
     required this.isAlreadyRegistered,
   });
 
-  const User.unknown()
+  const UserPreferences.unknown()
       : email = 'unknown',
         password = 'unknown',
         confirmedPassword = 'unknown',
         username = 'unknown',
         isAlreadyRegistered = false;
 
-  User copyWith({
+  UserPreferences copyWith({
     String? email,
     String? password,
     String? confirmedPassword,
     String? username,
     bool? isAlreadyRegistered,
-  }) =>
-      User(
+  }) => UserPreferences(
         email: email ?? this.email,
         password: password ?? this.password,
         confirmedPassword: confirmedPassword ?? this.confirmedPassword,
@@ -37,7 +36,7 @@ class User {
         isAlreadyRegistered: isAlreadyRegistered ?? this.isAlreadyRegistered,
       );
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserPreferences.fromJson(Map<String, dynamic> json) => UserPreferences(
         email: json['email'] as String,
         password: json['password'] as String,
         confirmedPassword: json['confirmed_password'] as String,
@@ -54,7 +53,7 @@ class User {
       };
 
   @override
-  bool operator ==(covariant User other) =>
+  bool operator ==(covariant UserPreferences other) =>
       identical(this, other) ||
       (email == other.email &&
           password == other.password &&
