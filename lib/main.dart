@@ -13,7 +13,6 @@ import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step
 import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
 import 'package:simple_coffee/features/product_pages/home_pages/home.dart';
 import 'package:simple_coffee/features/product_pages/details_product_pages/details_product.dart';
-import 'package:simple_coffee/shared/immutables/user_cache.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
@@ -76,7 +75,7 @@ class _MyAppState extends State<MyApp> {
         ),
         home: const InitialScreen(),
         routes: {
-          '/': (context) => ResponsivePage(
+          '/onboarding': (context) => ResponsivePage(
                 builder: (context, screenType) {
                   return OnBoardingPage(screenType: screenType);
                 },
@@ -149,7 +148,7 @@ class InitialScreen extends StatelessWidget {
             });
           } else {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/onboarding');
             });
           }
           return const Scaffold(
