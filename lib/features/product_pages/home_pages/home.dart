@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
 
 // RESPONSIVE PAGES
-import 'package:simple_coffee/features/product_pages/home_page/home_page_desktop.dart';
-import 'package:simple_coffee/features/product_pages/home_page/home_page_tablet.dart';
-import 'package:simple_coffee/features/product_pages/home_page/home_page_mobile.dart';
+import 'package:simple_coffee/features/product_pages/home_pages/home_page_desktop.dart';
+import 'package:simple_coffee/features/product_pages/home_pages/home_page_tablet.dart';
+import 'package:simple_coffee/features/product_pages/home_pages/home_page_mobile.dart';
 
 class Home extends StatefulWidget {
 
