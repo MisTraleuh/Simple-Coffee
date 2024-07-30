@@ -7,6 +7,7 @@ class CustomCard extends StatelessWidget {
   final String description;
   final String price;
   final Color buttonColor;
+  final BoxConstraints parentConstraints;
 
   const CustomCard({
     Key? key,
@@ -16,10 +17,13 @@ class CustomCard extends StatelessWidget {
     required this.description,
     required this.price,
     required this.buttonColor,
+    required this.parentConstraints,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //print(parentConstraints.maxWidth);
+    //print(parentConstraints.maxHeight);
     return Container(
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -33,7 +37,7 @@ class CustomCard extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
-                  height: 100,
+                  height: parentConstraints.maxHeight * 0.5,
                   width: double.infinity,
                   child: Image.asset(imagePath, fit: BoxFit.cover),
                 ),
@@ -113,7 +117,7 @@ class CustomCard extends StatelessWidget {
                           ),
                           backgroundColor: buttonColor,
                           padding: const EdgeInsets.all(3.0),
-                          minimumSize: const Size(50, 50),
+                          minimumSize: Size(parentConstraints.maxWidth * 0.3, 0),
                         ),
                         child: const Text(
                           '+',

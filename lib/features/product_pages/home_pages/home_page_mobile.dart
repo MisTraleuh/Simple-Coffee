@@ -229,13 +229,18 @@ class _HomeMobileState extends State<HomeMobile> {
                     ),
                     itemCount: products[selectedButton]!.length,
                     itemBuilder: (context, index) {
-                      return CustomCard(
-                        imagePath: products[selectedButton]![index]['imagePath']!,
-                        rating: products[selectedButton]![index]['rating']!,
-                        nameType: products[selectedButton]![index]['nameType']!,
-                        description: products[selectedButton]![index]['description']!,
-                        price: products[selectedButton]![index]['price']!,
-                        buttonColor: Theme.of(context).colorScheme.primary,
+                      return LayoutBuilder(
+                        builder: (context, constraints) {
+                          return CustomCard(
+                            imagePath: products[selectedButton]![index]['imagePath']!,
+                            rating: products[selectedButton]![index]['rating']!,
+                            nameType: products[selectedButton]![index]['nameType']!,
+                            description: products[selectedButton]![index]['description']!,
+                            price: products[selectedButton]![index]['price']!,
+                            buttonColor: Theme.of(context).colorScheme.primary,
+                            parentConstraints: constraints,
+                          );
+                        },
                       );
                     },
                   ),
