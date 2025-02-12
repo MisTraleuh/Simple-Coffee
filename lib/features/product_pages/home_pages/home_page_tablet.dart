@@ -15,7 +15,7 @@ class _HomeTabletState extends State<HomeTablet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Home Page"),
+      child: Text("Home Page Tablet"),
     );
   }
 }

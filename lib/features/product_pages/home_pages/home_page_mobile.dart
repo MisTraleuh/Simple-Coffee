@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
-import "package:simple_coffee/models/cards/ImageCard.dart";
 import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
 
@@ -33,18 +33,15 @@ class _HomeMobileState extends State<HomeMobile> {
       _passed = true;
     }
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Stack(
             children: <Widget>[
               Container(
-                height: height * 0.35,
-                width: width,
+                height: 200,
+                width: double.infinity,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -56,62 +53,74 @@ class _HomeMobileState extends State<HomeMobile> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(right: width * 0.08, left: width * 0.08, top: height * 0.1),
+                  padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Location',
-                                style: TextStyle(color: Colors.grey, fontSize: 12),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Montpellier, France',
-                                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(
-                                    Icons.keyboard_arrow_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          CircleAvatar(
-                              backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Location',
+                                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: AutoSizeText(
+                                        'Montpellier, France',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold
+                                        ),
+                                        maxLines: 1,
+                                        minFontSize: 10,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Colors.white,
+                                    )
+                                  ],
+                                ),
+                              ],
                             ),
+                          ),
+                          Flexible(
+                            child: 
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
+                          ),
+                          ),
                         ],
                       ),
-                      SizedBox(height: height * 0.02),
+                      const SizedBox(height: 15),
                       Container(
+                        height: 40,
                         decoration: BoxDecoration(
                           color: Colors.grey[800],
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(
                           children: [
-                            SizedBox(width: width * 0.02),
+                            const SizedBox(width: 10),
                             const Icon(Icons.search, color: Colors.white),
-                            SizedBox(width: width * 0.02),
-                            
+                            const SizedBox(width: 10),
                             const Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Search coffee',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                              child: Text(
+                                "Search coffee",
+                                style: TextStyle(color: Colors.white),
+                                textAlign: TextAlign.left,
                                 ),
-                              ),
                             ),
                             Container(
-                              height: height * 0.05,
+                              height: 50,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
                                 borderRadius: BorderRadius.circular(8),
@@ -130,121 +139,110 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: height * 0.26, right: width * 0.08, left: width * 0.08),
+                padding: const EdgeInsets.only(top: 130, right: 20, left: 20),
                 child: Center(
                   child: SizedBox(
-                    height: height * 0.2,
-                    width: width,
+                    height: 150,
+                    width: double.infinity,
                     child: ImageCard(
                       imagePath: "assets/app/products_assets/coffee_promo.png",
-                      child: Column(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          double screenHeight = constraints.maxHeight;
+                          double screenWidth = constraints.maxWidth;
+
+                        return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            height: screenHeight * 0.25,
+                            width: screenWidth * 0.2,
                             decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: const Text(
                               'Promo',
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold
+                              ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                right: 0,
-                                bottom: 30,
-                                child: Container(
-                                  color: Colors.black,
-                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                                ),
-                              ),
-                              Positioned(
-                                left: 0,
-                                right: 25,
-                                bottom: 2,
-                                child: Container(
-                                  color: Colors.black,
-                                  padding: const EdgeInsets.symmetric(vertical: 8),
-                                ),
-                              ),
-                              const Text(
-                                'Buy one get\none FREE',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black,
-                                      blurRadius: 5,
-                                      offset: Offset(0, 5),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                          SizedBox(height: screenHeight * 0.05),
+                          SizedBox(
+                            height: screenHeight * 0.7,
+                            child: const PromoTextWidget(
+                              text: "Get 50% off\non your first order",
+                            ),
                           ),
                         ],
+                      );
+                        },
                       ),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: height * 0.47),
-                child: Center(
-                  child: ButtonsRow(
-                    buttonNames: productsName,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    inactiveColor: Colors.white70,
-                    borderRadius: 10,
-                    onButtonPressed: (String name) {
-                      setState(() {
-                        selectedButton = name;
-                      });
-                    },
-                    isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
-                    isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
-                    buttonSize: const Size(100, 60),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: height * 0.55, right: width * 0.08, left: width * 0.08),
-                child: SizedBox(
-                  height: height * 0.45,
-                  width: width,
-                  child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15.0,
-                      crossAxisSpacing: 25.0,
-                      childAspectRatio: 0.60,
-                    ),
-                    itemCount: products[selectedButton]!.length,
-                    itemBuilder: (context, index) {
-                      return LayoutBuilder(
-                        builder: (context, constraints) {
-                          return CustomCard(
-                            imagePath: products[selectedButton]![index]['imagePath']!,
-                            rating: products[selectedButton]![index]['rating']!,
-                            nameType: products[selectedButton]![index]['nameType']!,
-                            description: products[selectedButton]![index]['description']!,
-                            price: products[selectedButton]![index]['price']!,
-                            buttonColor: Theme.of(context).colorScheme.primary,
-                            parentConstraints: constraints,
-                          );
+                padding: const EdgeInsets.only(top: 290),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5, bottom: 5),
+                      child: ButtonsRow(
+                        buttonNames: productsName,
+                        activeColor: Theme.of(context).colorScheme.primary,
+                        inactiveColor: Colors.white70,
+                        borderRadius: 10,
+                        onButtonPressed: (String name) {
+                          setState(() {
+                            selectedButton = name;
+                          });
                         },
-                      );
-                    },
-                  ),
-                ),
+                        isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
+                        isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
+                        buttonSize: const Size(100, 60),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                      child: SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child: GridView.builder(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 15.0,
+                            crossAxisSpacing: 2.0,
+                            childAspectRatio: 0.6,
+                          ),
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: products[selectedButton]!.length,
+                          itemBuilder: (context, index) {
+                            return LayoutBuilder(
+                              builder: (context, constraints) {
+                                return
+                                CustomCard(
+                                  imagePath: products[selectedButton]![index]['imagePath']!,
+                                  rating: products[selectedButton]![index]['rating']!,
+                                  nameType: products[selectedButton]![index]['nameType']!,
+                                  description: products[selectedButton]![index]['description']!,
+                                  price: products[selectedButton]![index]['price']!,
+                                  buttonColor: Theme.of(context).colorScheme.primary,
+                                  parentConstraints: constraints,
+                                
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ),
             ],
           ),
@@ -253,3 +251,95 @@ class _HomeMobileState extends State<HomeMobile> {
     );
   }
 }
+
+
+class ImageCard extends StatelessWidget {
+  final String imagePath;
+  final Widget child;
+
+  const ImageCard({
+    Key? key,
+    required this.imagePath,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              imagePath,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.bottomLeft,
+              child: child,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PromoTextWidget extends StatelessWidget {
+  final String text;
+
+  const PromoTextWidget({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Stack(
+          children: text.split("\n").asMap().entries.map((entry) {
+            int index = entry.key;
+            String line = entry.value;
+
+            return Positioned(
+              top: index * 30.0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                color: Colors.black,
+                child: AutoSizeText(
+                  line,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  minFontSize: 10,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
+}
+

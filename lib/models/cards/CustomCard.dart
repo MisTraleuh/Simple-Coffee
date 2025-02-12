@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:auto_size_text/auto_size_text.dart';
+
 class CustomCard extends StatelessWidget {
   final String imagePath;
   final String rating;
@@ -22,8 +24,6 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(parentConstraints.maxWidth);
-    //print(parentConstraints.maxHeight);
     return Container(
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -39,7 +39,10 @@ class CustomCard extends StatelessWidget {
                 SizedBox(
                   height: parentConstraints.maxHeight * 0.5,
                   width: double.infinity,
-                  child: Image.asset(imagePath, fit: BoxFit.cover),
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover
+                  ),
                 ),
                 Positioned(
                   top: 8,
@@ -64,64 +67,73 @@ class CustomCard extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    nameType,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      nameType,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 18,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                      child: AutoSizeText(
+                      description,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                      ),
+                      maxLines: 1,
+                      minFontSize: 5,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 8),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          const Text(
-                            '\$',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            price,
+                      Expanded(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: AutoSizeText(
+                            '\$ $price',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 22,
+                            ),
+                            maxLines: 1,
+                            minFontSize: 10,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: parentConstraints.maxWidth * 0.3,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: buttonColor,
+                            padding: EdgeInsets.symmetric(horizontal: 4),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ],
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                          child: const Text(
+                            'Buy',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                          backgroundColor: buttonColor,
-                          padding: const EdgeInsets.all(3.0),
-                          minimumSize: Size(parentConstraints.maxWidth * 0.3, 0),
-                        ),
-                        child: const Text(
-                          '+',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
                     ],

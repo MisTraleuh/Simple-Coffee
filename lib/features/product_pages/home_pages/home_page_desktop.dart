@@ -15,7 +15,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Home Page"),
+      child: Text("Home Page Desktop"),
     );
   }
 }

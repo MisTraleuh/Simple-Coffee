@@ -19,6 +19,7 @@ dependencies:
   url_launcher: ^6.0.20
   provider: ^6.1.1
   wave: 0.2.2
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
