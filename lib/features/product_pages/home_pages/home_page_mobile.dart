@@ -219,7 +219,7 @@ class _HomeMobileState extends State<HomeMobile> {
                             crossAxisSpacing: 2.0,
                             childAspectRatio: 0.6,
                           ),
-                          physics: const NeverScrollableScrollPhysics(),
+                          
                           itemCount: products[selectedButton]!.length,
                           itemBuilder: (context, index) {
                             return LayoutBuilder(

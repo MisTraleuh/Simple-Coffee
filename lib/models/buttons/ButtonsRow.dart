@@ -37,6 +37,7 @@ class _ButtonsRowState extends State<ButtonsRow> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: widget.buttonNames.map((name) {
           bool isActive = activeButton == name;
           return Padding(
