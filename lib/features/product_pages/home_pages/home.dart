@@ -8,8 +8,7 @@ import 'package:simple_coffee/features/product_pages/home_pages/home_page_deskto
 import 'package:simple_coffee/features/product_pages/home_pages/home_page_tablet.dart';
 import 'package:simple_coffee/features/product_pages/home_pages/home_page_mobile.dart';
 
-class Home extends StatefulWidget {
-
+class Home extends StatelessWidget {
   final ScreenType screenType;
 
   const Home({
@@ -18,14 +17,8 @@ class Home extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-
-  @override
   Widget build(BuildContext context) {
-    switch (widget.screenType) {
+    switch (screenType) {
       case ScreenType.desktop:
         return const HomeDesktop();
       case ScreenType.tablet:

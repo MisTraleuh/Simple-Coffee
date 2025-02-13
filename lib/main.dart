@@ -35,24 +35,10 @@ void main() {
   );
 }
 
-class MyApp extends StatefulWidget {
-
+class MyApp extends StatelessWidget {
   const MyApp({
     Key? key
   }) : super(key: key);
-
-  @override
-  State<MyApp> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State<MyApp> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +63,7 @@ class _MyAppState extends State<MyApp> {
                 builder: (context, screenType) {
                   return Home(screenType: screenType);
                 },
-              ), // const InitialScreen(),
+              ),
         routes: {
           '/onboarding': (context) => ResponsivePage(
                 builder: (context, screenType) {
@@ -130,31 +116,41 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class InitialScreen extends StatelessWidget {
-
+class InitialScreen extends StatefulWidget {
   const InitialScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final profileInformationCache = Provider.of<ProfileInformationCache>(context, listen: false);
+  State<InitialScreen> createState() => _InitialScreenState();
+}
 
+class _InitialScreenState extends State<InitialScreen> {
+  Future<bool>? _isRegisteredFuture;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final profileInformationCache = Provider.of<ProfileInformationCache>(context, listen: false);
+    _isRegisteredFuture = profileInformationCache.isAlreadyRegistered();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return FutureBuilder<bool>(
-      future: profileInformationCache.isAlreadyRegistered(),
+      future: _isRegisteredFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         } else {
-          if (snapshot.data == true) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (snapshot.data == true) {
               Navigator.pushReplacementNamed(context, '/home');
-            });
-          } else {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
+            } else {
               Navigator.pushReplacementNamed(context, '/onboarding');
-            });
-          }
+            }
+          });
+
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );

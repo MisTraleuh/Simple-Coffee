@@ -94,6 +94,7 @@ class CustomCard extends StatelessWidget {
                         color: Colors.grey,
                         fontSize: 14,
                       ),
+                      textAlign: TextAlign.center,
                       maxLines: 1,
                       minFontSize: 5,
                     ),

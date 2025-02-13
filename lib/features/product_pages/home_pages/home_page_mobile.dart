@@ -188,61 +188,60 @@ class _HomeMobileState extends State<HomeMobile> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 290),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: ButtonsRow(
-                        buttonNames: productsName,
-                        activeColor: Theme.of(context).colorScheme.primary,
-                        inactiveColor: Colors.white70,
-                        borderRadius: 10,
-                        onButtonPressed: (String name) {
-                          setState(() {
-                            selectedButton = name;
-                          });
-                        },
-                        isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
-                        isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
-                        buttonSize: const Size(100, 60),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                      child: SizedBox(
-                        height: 400,
-                        width: double.infinity,
-                        child: GridView.builder(
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 15.0,
-                            crossAxisSpacing: 2.0,
-                            childAspectRatio: 0.6,
-                          ),
-                          
-                          itemCount: products[selectedButton]!.length,
-                          itemBuilder: (context, index) {
-                            return LayoutBuilder(
-                              builder: (context, constraints) {
-                                return
-                                CustomCard(
-                                  imagePath: products[selectedButton]![index]['imagePath']!,
-                                  rating: products[selectedButton]![index]['rating']!,
-                                  nameType: products[selectedButton]![index]['nameType']!,
-                                  description: products[selectedButton]![index]['description']!,
-                                  price: products[selectedButton]![index]['price']!,
-                                  buttonColor: Theme.of(context).colorScheme.primary,
-                                  parentConstraints: constraints,
-                                
-                                );
-                              },
-                            );
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: ButtonsRow(
+                          buttonNames: productsName,
+                          activeColor: Theme.of(context).colorScheme.primary,
+                          inactiveColor: Colors.white70,
+                          borderRadius: 10,
+                          onButtonPressed: (String name) {
+                            setState(() {
+                              selectedButton = name;
+                            });
                           },
+                          isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
+                          isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
+                          buttonSize: const Size(100, 60),
                         ),
                       ),
-                    ),
-                  ],
-                )
+                      Expanded(
+                        child: Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                        child: GridView.builder(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 15.0,
+                              crossAxisSpacing: 2.0,
+                              childAspectRatio: 0.6,
+                            ),
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: products[selectedButton]!.length,
+                            itemBuilder: (context, index) {
+                              return LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return CustomCard(
+                                    imagePath: products[selectedButton]![index]['imagePath']!,
+                                    rating: products[selectedButton]![index]['rating']!,
+                                    nameType: products[selectedButton]![index]['nameType']!,
+                                    description: products[selectedButton]![index]['description']!,
+                                    price: products[selectedButton]![index]['price']!,
+                                    buttonColor: Theme.of(context).colorScheme.primary,
+                                    parentConstraints: constraints,
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
