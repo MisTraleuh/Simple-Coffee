@@ -211,29 +211,35 @@ class _HomeMobileState extends State<HomeMobile> {
                       ),
                       Expanded(
                         child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                        child: GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 15.0,
-                              crossAxisSpacing: 2.0,
-                              childAspectRatio: 0.6,
-                            ),
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: products[selectedButton]!.length,
-                            itemBuilder: (context, index) {
-                              return LayoutBuilder(
-                                builder: (context, constraints) {
-                                  return CustomCard(
-                                    imagePath: products[selectedButton]![index]['imagePath']!,
-                                    rating: products[selectedButton]![index]['rating']!,
-                                    nameType: products[selectedButton]![index]['nameType']!,
-                                    description: products[selectedButton]![index]['description']!,
-                                    price: products[selectedButton]![index]['price']!,
-                                    buttonColor: Theme.of(context).colorScheme.primary,
-                                    parentConstraints: constraints,
+                          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                          child:LayoutBuilder(
+                            builder: (context, constraints) {
+                              int crossAxisCount = constraints.maxWidth > 450 ? 3 : 2;
+  
+                              return GridView.builder(
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: crossAxisCount,
+                                  mainAxisSpacing: 15.0,
+                                  crossAxisSpacing: 2.0,
+                                  childAspectRatio: 0.6,
+                                ),
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: products[selectedButton]!.length,
+                                itemBuilder: (context, index) {
+                                  return LayoutBuilder(
+                                    builder: (context, constraints) {
+                                      return CustomCard(
+                                        imagePath: products[selectedButton]![index]['imagePath']!,
+                                        rating: products[selectedButton]![index]['rating']!,
+                                        nameType: products[selectedButton]![index]['nameType']!,
+                                        description: products[selectedButton]![index]['description']!,
+                                        price: products[selectedButton]![index]['price']!,
+                                        buttonColor: Theme.of(context).colorScheme.primary,
+                                        parentConstraints: constraints,
+                                      );
+                                    },
                                   );
-                                },
+                                },  
                               );
                             },
                           ),
