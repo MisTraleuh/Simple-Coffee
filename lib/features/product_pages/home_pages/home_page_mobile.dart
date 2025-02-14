@@ -193,11 +193,11 @@ class _HomeMobileState extends State<HomeMobile> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
                         child: ButtonsRow(
                           buttonNames: productsName,
                           activeColor: Theme.of(context).colorScheme.primary,
-                          inactiveColor: Colors.white70,
+                          inactiveColor: Colors.white,
                           borderRadius: 10,
                           onButtonPressed: (String name) {
                             setState(() {
@@ -226,10 +226,9 @@ class _HomeMobileState extends State<HomeMobile> {
                                   children: List.generate(
                                     products[selectedButton]!.length,
                                     (index) {
-                                      return Container(
+                                      return SizedBox(
                                         width: (maxWidth / cardsPerRow) - 10,
                                         height: 300,
-                                        color: Colors.blue,
                                         child: CustomCard(
                                           imagePath: products[selectedButton]![index]['imagePath']!,
                                           rating: products[selectedButton]![index]['rating']!,

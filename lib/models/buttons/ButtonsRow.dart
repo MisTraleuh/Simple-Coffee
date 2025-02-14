@@ -54,6 +54,7 @@ class _ButtonsRowState extends State<ButtonsRow> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                 ),
+                shadowColor: Colors.grey,
                 minimumSize: widget.buttonSize,
               ),
               child: Text(
