@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
       case ScreenType.desktop:
         return const HomeDesktop();
       case ScreenType.tablet:
-        return const HomeMobile();
+        return const HomeTablet();
       case ScreenType.mobile:
         return const HomeMobile();
       default:
