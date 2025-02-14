@@ -3,6 +3,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
+import "package:simple_coffee/models/cards/ImageCard.dart";
+import "package:simple_coffee/models/text/promo_text_widget.dart";
 
 import "package:simple_coffee/data/products_lists.dart";
 
@@ -148,38 +150,36 @@ class _HomeMobileState extends State<HomeMobile> {
                       imagePath: "assets/app/products_assets/coffee_promo.png",
                       child: LayoutBuilder(
                         builder: (context, constraints) {
-                          double screenHeight = constraints.maxHeight;
-                          double screenWidth = constraints.maxWidth;
-
-                        return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            height: screenHeight * 0.25,
-                            width: screenWidth * 0.2,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Text(
-                              'Promo',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                height: 20,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Text(
+                                  'Promo',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          SizedBox(height: screenHeight * 0.05),
-                          SizedBox(
-                            height: screenHeight * 0.7,
-                            child: const PromoTextWidget(
-                              text: "Get 50% off\non your first order",
-                            ),
-                          ),
-                        ],
-                      );
+                              const SizedBox(height: 10),
+                              const SizedBox(
+                                height: 50,
+                                child: PromoTextWidget(
+                                  text: "Get 50% off\non your first order",
+                                  textSize: 15,
+                                ),
+                              ),
+                            ],
+                          );
                         },
                       ),
                     ),
@@ -257,95 +257,3 @@ class _HomeMobileState extends State<HomeMobile> {
     );
   }
 }
-
-
-class ImageCard extends StatelessWidget {
-  final String imagePath;
-  final Widget child;
-
-  const ImageCard({
-    Key? key,
-    required this.imagePath,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              imagePath,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.bottomLeft,
-              child: child,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PromoTextWidget extends StatelessWidget {
-  final String text;
-
-  const PromoTextWidget({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Stack(
-          children: text.split("\n").asMap().entries.map((entry) {
-            int index = entry.key;
-            String line = entry.value;
-
-            return Positioned(
-              top: index * 30.0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                color: Colors.black,
-                child: AutoSizeText(
-                  line,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  minFontSize: 10,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            );
-          }).toList(),
-        );
-      },
-    );
-  }
-}
-

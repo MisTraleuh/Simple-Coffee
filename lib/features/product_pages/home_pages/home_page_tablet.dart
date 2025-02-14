@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
+import "package:simple_coffee/models/cards/ImageCard.dart";
+import "package:simple_coffee/models/text/promo_text_widget.dart";
+
 
 import "package:simple_coffee/data/products_lists.dart";
 
@@ -40,7 +42,7 @@ class _HomeTabletState extends State<HomeTablet> {
           Stack(
             children: <Widget>[
               Container(
-                height: 230,
+                height: 240,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -65,21 +67,17 @@ class _HomeTabletState extends State<HomeTablet> {
                               children: [
                                 Text(
                                   'Location',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                                  style: TextStyle(color: Colors.grey, fontSize: 15),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Flexible(
-                                      child: AutoSizeText(
-                                        'Montpellier, France',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold
-                                        ),
-                                        maxLines: 1,
-                                        minFontSize: 10,
+                                    Text(
+                                      'Montpellier, France',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold
                                       ),
                                     ),
                                     SizedBox(width: 5),
@@ -92,16 +90,14 @@ class _HomeTabletState extends State<HomeTablet> {
                               ],
                             ),
                           ),
-                          Flexible(
-                            child: CircleAvatar(
-                              backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
-                            ),
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
                           ),
                         ],
                       ),
                       const SizedBox(height: 15),
                       Container(
-                        height: 40,
+                        height: 50,
                         decoration: BoxDecoration(
                           color: Colors.grey[800],
                           borderRadius: BorderRadius.circular(10),
@@ -114,9 +110,13 @@ class _HomeTabletState extends State<HomeTablet> {
                             const Expanded(
                               child: Text(
                                 "Search coffee",
-                                style: TextStyle(color: Colors.white),
-                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
                                 ),
+                                textAlign: TextAlign.center,
+                                
+                              ),
                             ),
                             Container(
                               height: 50,
@@ -127,7 +127,9 @@ class _HomeTabletState extends State<HomeTablet> {
                               child: const Padding(
                                 padding: EdgeInsets.all(10.0),
                                 child: Icon(
-                                  Icons.filter_list, color: Colors.white),
+                                  Icons.filter_list,
+                                  color: Colors.white
+                                ),
                               ),
                             ),
                           ],
@@ -138,7 +140,7 @@ class _HomeTabletState extends State<HomeTablet> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 130, right: 20, left: 20),
+                padding: const EdgeInsets.only(top: 155, right: 20, left: 20),
                 child: Center(
                   child: SizedBox(
                     height: 200,
@@ -147,37 +149,36 @@ class _HomeTabletState extends State<HomeTablet> {
                       imagePath: "assets/app/products_assets/coffee_promo.png",
                       child: LayoutBuilder(
                         builder: (context, constraints) {
-
-                        return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            height: 25,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Text(
-                              'Promo',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                height: 25,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Text(
+                                  'Promo',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          const SizedBox(
-                            height: 80, 
-                            child: PromoTextWidget(
-                              text: "Get 50% off\non your first order",
-                              textSize: 20,
-                            ),
-                          ),
-                        ],
-                      );
+                              const SizedBox(height: 10),
+                              const SizedBox(
+                                height: 80, 
+                                child: PromoTextWidget(
+                                  text: "Get 50% off\non your first order",
+                                  textSize: 20,
+                                ),
+                              ),
+                            ],
+                          );
                         },
                       ),
                     ),
@@ -204,7 +205,7 @@ class _HomeTabletState extends State<HomeTablet> {
                           },
                           isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
                           isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
-                          buttonSize: const Size(100, 60),
+                          buttonSize: const Size(100, 70),
                         ),
                       ),
                       Expanded(
@@ -256,99 +257,4 @@ class _HomeTabletState extends State<HomeTablet> {
   }
 }
 
-
-class ImageCard extends StatelessWidget {
-  final String imagePath;
-  final Widget child;
-
-  const ImageCard({
-    Key? key,
-    required this.imagePath,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              imagePath,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.bottomLeft,
-              child: child,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PromoTextWidget extends StatelessWidget {
-  final String text;
-  final double textSize;
-
-  const PromoTextWidget({
-    super.key,
-    required this.text,
-    this.textSize = 15,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Stack(
-          children: text.split("\n").asMap().entries.map((entry) {
-            int index = entry.key;
-            String line = entry.value;
-
-            return Positioned(
-              top: index * 30.0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                color: Colors.black,
-                child: AutoSizeText(
-                  line,
-                  style: TextStyle(
-                    fontSize: textSize,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  minFontSize: 10,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            );
-          }).toList(),
-        );
-      },
-    );
-  }
-}
 
