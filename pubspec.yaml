@@ -30,6 +30,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/app/
+    - assets/app/icons
     - assets/app/OnBoarding/
     - assets/app/OnBoarding/SignIn/
     - assets/app/products_assets/

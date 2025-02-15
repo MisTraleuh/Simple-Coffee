@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DetailsProductTablet extends StatefulWidget {
 
-  final Map<String, String> product;
+  final Map<String, dynamic> product;
 
   const DetailsProductTablet({
     Key? key,

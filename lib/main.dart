@@ -21,6 +21,8 @@ import 'package:simple_coffee/shared/providers/pages/home_page_provider.dart';
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
 
+import 'package:simple_coffee/data/products_lists.dart';
+
 // Material Design
 const Color primaryColor = Color.fromARGB(255, 198, 124, 78);
 const Color secondaryColor = Color.fromARGB(255, 96, 60, 38);
@@ -63,7 +65,10 @@ class MyApp extends StatelessWidget {
         ),
         home: ResponsivePage(
                 builder: (context, screenType) {
-                  return Home(screenType: screenType);
+                  return DetailsProduct(
+                    screenType: screenType,
+                    product: products["Cappuccinos"]![0],
+                  );
                 },
               ),
         routes: {
@@ -111,7 +116,7 @@ class MyApp extends StatelessWidget {
                 builder: (context, screenType) {
                   return DetailsProduct(
                     screenType: screenType,
-                    product: ModalRoute.of(context)!.settings.arguments as Map<String, String>
+                    product: ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>,
                   );
                 },
               ),

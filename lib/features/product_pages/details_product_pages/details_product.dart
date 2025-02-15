@@ -11,7 +11,7 @@ import 'package:simple_coffee/features/product_pages/details_product_pages/detai
 class DetailsProduct extends StatefulWidget {
 
   final ScreenType screenType;
-    final Map<String, String> product;
+  final Map<String, dynamic> product;
 
   const DetailsProduct({
     Key? key,
