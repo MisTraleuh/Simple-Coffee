@@ -14,7 +14,6 @@ class HomePageModel extends ChangeNotifier {
   }
 
   void setSelectedButton(String button) {
-    print(button);
     selectedButton = button;
     notifyListeners();
   }
