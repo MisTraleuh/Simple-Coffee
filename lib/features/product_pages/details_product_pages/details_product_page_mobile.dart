@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:simple_coffee/models/buttons/SizeSelector.dart';
+
 class DetailsProductMobile extends StatefulWidget {
 
   final Map<String, dynamic> product;
@@ -150,34 +152,7 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
                   const SizedBox(height: 10),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: widget.product['sizes'].map<Widget>((size) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Container(
-                            height: 40,
-                            width: 135,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary.withOpacity(0.02),
-                              borderRadius: BorderRadius.circular(10.0),
-                              border: Border.all(
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                size,
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
+                    child: SizeSelector(sizes: widget.product['sizes']),
                   ),
                   const SizedBox(height: 35),
                   Row(
@@ -191,7 +166,6 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
-
                             ),
                           ),
                           Text(
