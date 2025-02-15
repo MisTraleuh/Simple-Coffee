@@ -16,6 +16,7 @@ import 'package:simple_coffee/features/product_pages/details_product_pages/detai
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
+import 'package:simple_coffee/shared/providers/pages/home_page_provider.dart';
 
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
@@ -29,6 +30,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ProfileInformationCache()),
+        ChangeNotifierProvider(create: (context) => HomePageModel()),
       ],
       child: const MyApp(),
     ),

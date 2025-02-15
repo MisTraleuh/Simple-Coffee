@@ -5,11 +5,13 @@ import "package:simple_coffee/models/buttons/ButtonsRow.dart";
 import "package:simple_coffee/models/cards/CustomCard.dart";
 import "package:simple_coffee/models/cards/ImageCard.dart";
 import "package:simple_coffee/models/text/promo_text_widget.dart";
+import "package:simple_coffee/models/bars/shared_bottom_nav_bar.dart";
 
 import "package:simple_coffee/data/products_lists.dart";
 
 import 'package:provider/provider.dart';
 import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
+import 'package:simple_coffee/shared/providers/pages/home_page_provider.dart';
 
 class HomeMobile extends StatefulWidget {
 
@@ -23,12 +25,12 @@ class HomeMobile extends StatefulWidget {
 
 class _HomeMobileState extends State<HomeMobile> {
 
-  String selectedButton = "Cappuccinos";
   bool _passed = false;
 
   @override
   Widget build(BuildContext context) {
     final profileInformationCache = Provider.of<ProfileInformationCache>(context);
+    final homePageModel = Provider.of<HomePageModel>(context);
 
     if (!_passed) {
       profileInformationCache.loadUser();
@@ -37,6 +39,10 @@ class _HomeMobileState extends State<HomeMobile> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      bottomNavigationBar: SharedBottomNavBar(
+        selectedIndex: homePageModel.selectedIndex,
+        onItemTapped: (index) => homePageModel.onItemTapped(context, index),
+      ),
       body: ListView(
         children: <Widget>[
           Stack(
@@ -94,11 +100,8 @@ class _HomeMobileState extends State<HomeMobile> {
                               ],
                             ),
                           ),
-                          Flexible(
-                            child: 
                           CircleAvatar(
                             backgroundImage: AssetImage('assets/app/products_assets/avatar.png'),
-                          ),
                           ),
                         ],
                       ),
@@ -200,10 +203,9 @@ class _HomeMobileState extends State<HomeMobile> {
                           inactiveColor: Colors.white,
                           borderRadius: 10,
                           onButtonPressed: (String name) {
-                            setState(() {
-                              selectedButton = name;
-                            });
+                            homePageModel.setSelectedButton(name);
                           },
+                          activeButton: homePageModel.selectedButton,
                           isActiveTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
                           isInactiveTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
                           buttonSize: const Size(100, 60),
@@ -224,17 +226,17 @@ class _HomeMobileState extends State<HomeMobile> {
                                   runSpacing: 15.0,
                                   alignment: WrapAlignment.start,
                                   children: List.generate(
-                                    products[selectedButton]!.length,
+                                    products[homePageModel.selectedButton]!.length,
                                     (index) {
                                       return SizedBox(
                                         width: (maxWidth / cardsPerRow) - 10,
                                         height: 300,
                                         child: CustomCard(
-                                          imagePath: products[selectedButton]![index]['imagePath']!,
-                                          rating: products[selectedButton]![index]['rating']!,
-                                          nameType: products[selectedButton]![index]['nameType']!,
-                                          description: products[selectedButton]![index]['description']!,
-                                          price: products[selectedButton]![index]['price']!,
+                                          imagePath: products[homePageModel.selectedButton]![index]['imagePath']!,
+                                          rating: products[homePageModel.selectedButton]![index]['rating']!,
+                                          nameType: products[homePageModel.selectedButton]![index]['nameType']!,
+                                          description: products[homePageModel.selectedButton]![index]['description']!,
+                                          price: products[homePageModel.selectedButton]![index]['price']!,
                                           buttonColor: Theme.of(context).colorScheme.primary,
                                         ),
                                       );

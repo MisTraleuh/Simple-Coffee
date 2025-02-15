@@ -9,6 +9,7 @@ class ButtonsRow extends StatefulWidget {
   final TextStyle? isActiveTextStyle;
   final TextStyle? isInactiveTextStyle;
   final Size buttonSize;
+  final String activeButton;
 
   const ButtonsRow({
     Key? key,
@@ -20,6 +21,7 @@ class ButtonsRow extends StatefulWidget {
     this.isActiveTextStyle,
     this.isInactiveTextStyle,
     required this.buttonSize,
+    required this.activeButton,
   }) : super(key: key);
 
   @override
@@ -27,26 +29,20 @@ class ButtonsRow extends StatefulWidget {
 }
 
 class _ButtonsRowState extends State<ButtonsRow> {
-  String? activeButton;
 
   @override
   Widget build(BuildContext context) {
-
-    activeButton ??= widget.buttonNames.first;
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: widget.buttonNames.map((name) {
-          bool isActive = activeButton == name;
+          bool isActive = widget.activeButton == name;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ElevatedButton(
               onPressed: () {
-                setState(() {
-                  activeButton = name;
-                });
                 widget.onButtonPressed(name);
               },
               style: ElevatedButton.styleFrom(
