@@ -109,7 +109,10 @@ class MyApp extends StatelessWidget {
               ),
           '/details-product': (context) => ResponsivePage(
                 builder: (context, screenType) {
-                  return DetailsProduct(screenType: screenType);
+                  return DetailsProduct(
+                    screenType: screenType,
+                    product: ModalRoute.of(context)!.settings.arguments as Map<String, String>
+                  );
                 },
               ),
         },

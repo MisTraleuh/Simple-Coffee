@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class DetailsProductDesktop extends StatefulWidget {
 
+  final Map<String, String> product;
+
   const DetailsProductDesktop({
     Key? key,
+    required this.product,
   }) : super(key: key);
 
   @override

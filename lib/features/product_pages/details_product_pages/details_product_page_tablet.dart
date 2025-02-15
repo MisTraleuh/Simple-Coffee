@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class DetailsProductTablet extends StatefulWidget {
 
+  final Map<String, String> product;
+
   const DetailsProductTablet({
     Key? key,
+    required this.product,
   }) : super(key: key);
 
   @override

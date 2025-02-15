@@ -235,9 +235,16 @@ class _HomeMobileState extends State<HomeMobile> {
                                           imagePath: products[homePageModel.selectedButton]![index]['imagePath']!,
                                           rating: products[homePageModel.selectedButton]![index]['rating']!,
                                           nameType: products[homePageModel.selectedButton]![index]['nameType']!,
-                                          description: products[homePageModel.selectedButton]![index]['description']!,
+                                          withAdding: products[homePageModel.selectedButton]![index]['withAdding']!,
                                           price: products[homePageModel.selectedButton]![index]['price']!,
                                           buttonColor: Theme.of(context).colorScheme.primary,
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                              context,
+                                              '/details-product',
+                                              arguments: products[homePageModel.selectedButton]![index],
+                                            );
+                                          },
                                         ),
                                       );
                                     },

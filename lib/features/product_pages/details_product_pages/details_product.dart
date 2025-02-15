@@ -11,10 +11,12 @@ import 'package:simple_coffee/features/product_pages/details_product_pages/detai
 class DetailsProduct extends StatefulWidget {
 
   final ScreenType screenType;
+    final Map<String, String> product;
 
   const DetailsProduct({
     Key? key,
     required this.screenType,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -27,13 +29,13 @@ class _DetailsProductState extends State<DetailsProduct> {
   Widget build(BuildContext context) {
     switch (widget.screenType) {
       case ScreenType.desktop:
-        return const DetailsProductDesktop();
+        return DetailsProductDesktop(product: widget.product);
       case ScreenType.tablet:
-        return const DetailsProductTablet();
+        return DetailsProductTablet(product: widget.product);
       case ScreenType.mobile:
-        return const DetailsProductMobile();
+        return DetailsProductMobile(product: widget.product);
       default:
-        return const DetailsProductMobile();
+        return DetailsProductMobile(product: widget.product);
     }
   }
 }

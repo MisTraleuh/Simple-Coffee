@@ -4,18 +4,20 @@ class CustomCard extends StatelessWidget {
   final String imagePath;
   final String rating;
   final String nameType;
-  final String description;
+  final String withAdding;
   final String price;
   final Color buttonColor;
+  final VoidCallback onTap;
 
   const CustomCard({
     Key? key,
     required this.imagePath,
     required this.rating,
     required this.nameType,
-    required this.description,
+    required this.withAdding,
     required this.price,
     required this.buttonColor,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -83,7 +85,7 @@ class CustomCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    description,
+                    withAdding,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.grey,
@@ -106,7 +108,7 @@ class CustomCard extends StatelessWidget {
                       SizedBox(
                         width: 80,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: onTap,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: buttonColor,
                             padding: const EdgeInsets.symmetric(horizontal: 4),
