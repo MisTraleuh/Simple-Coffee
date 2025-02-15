@@ -199,7 +199,7 @@ class _HomeTabletState extends State<HomeTablet> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10, bottom: 10),
                         child: ButtonsRow(
-                          buttonNames: productsName,
+                          buttonNames: products.keys.toList(),
                           activeColor: Theme.of(context).colorScheme.primary,
                           inactiveColor: Colors.white,
                           borderRadius: 10,
