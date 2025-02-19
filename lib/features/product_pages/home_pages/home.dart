@@ -25,8 +25,6 @@ class Home extends StatelessWidget {
         return const HomeTablet();
       case ScreenType.mobile:
         return const HomeMobile();
-      default:
-        return const HomeMobile();
     }
   }
 }

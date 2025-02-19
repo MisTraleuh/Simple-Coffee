@@ -34,8 +34,6 @@ class _DetailsProductState extends State<DetailsProduct> {
         return DetailsProductTablet(product: widget.product);
       case ScreenType.mobile:
         return DetailsProductMobile(product: widget.product);
-      default:
-        return DetailsProductMobile(product: widget.product);
     }
   }
 }

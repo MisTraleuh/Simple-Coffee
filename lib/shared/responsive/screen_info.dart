@@ -27,11 +27,6 @@ class ScreenInfo {
           fontSize: 32,
           fontWeight: FontWeight.bold
         );
-      default: return const TextStyle(
-        color: Colors.white,
-        fontSize: 24,
-        fontWeight: FontWeight.bold
-      );
     }
   }
 }
