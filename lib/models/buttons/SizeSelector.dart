@@ -2,15 +2,30 @@ import 'package:flutter/material.dart';
 
 class SizeSelector extends StatefulWidget {
   final List<String> sizes;
+  final Function(String)? onContentChanged;
+  final Function(int)? onIndexChanged;
+  final int selectedIndex;
 
-  const SizeSelector({Key? key, required this.sizes}) : super(key: key);
+  const SizeSelector({
+    Key? key,
+    required this.sizes,
+    this.onContentChanged,
+    this.onIndexChanged,
+    this.selectedIndex = 1,
+  }) : super(key: key);
 
   @override
   State<SizeSelector> createState() => _SizeSelectorState();
 }
 
 class _SizeSelectorState extends State<SizeSelector> {
-  int _selectedIndex = 1;
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +39,8 @@ class _SizeSelectorState extends State<SizeSelector> {
             setState(() {
               _selectedIndex = index;
             });
+            if (widget.onIndexChanged != null) widget.onIndexChanged!(index);
+            if (widget.onContentChanged != null) widget.onContentChanged!(widget.sizes[index]);
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:simple_coffee/models/buttons/SizeSelector.dart';
 
+import 'package:provider/provider.dart';
+import 'package:simple_coffee/shared/providers/pages/details_product_provider.dart';
+
 class DetailsProductMobile extends StatefulWidget {
 
   final Map<String, dynamic> product;
@@ -18,7 +21,14 @@ class DetailsProductMobile extends StatefulWidget {
 class _DetailsProductMobileState extends State<DetailsProductMobile> {
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final detailsProductProvider = Provider.of<DetailsProductProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -152,7 +162,16 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
                   const SizedBox(height: 10),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: SizeSelector(sizes: widget.product['sizes']),
+                    child: SizeSelector(
+                      sizes: widget.product['sizes'],
+                      onIndexChanged: (index) {
+                        detailsProductProvider.setSelectedIndex(index);
+                      },
+                      onContentChanged: (content) {
+                        detailsProductProvider.setSelectedButton(content);
+                      },
+                      selectedIndex: detailsProductProvider.selectedIndex,
+                    ),
                   ),
                   const SizedBox(height: 35),
                   Row(

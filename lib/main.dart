@@ -67,10 +67,7 @@ class MyApp extends StatelessWidget {
         ),
         home: ResponsivePage(
                 builder: (context, screenType) {
-                  return DetailsProduct(
-                    screenType: screenType,
-                    product: products["Cappuccinos"]![0],
-                  );
+                  return Home(screenType: screenType);
                 },
               ),
         routes: {
