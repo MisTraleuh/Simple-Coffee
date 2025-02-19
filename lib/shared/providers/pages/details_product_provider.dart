@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePageModel extends ChangeNotifier {
+class DetailsProductProvider extends ChangeNotifier {
   String selectedButton = "M";
   int _selectedIndex = 0;
 
