@@ -33,7 +33,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ProfileInformationCache()),
-        ChangeNotifierProvider(create: (context) => HomePageModel()),
+        ChangeNotifierProvider(create: (context) => HomePageProvider()),
         ChangeNotifierProvider(create: (context) => DetailsProductProvider()),
       ],
       child: const MyApp(),

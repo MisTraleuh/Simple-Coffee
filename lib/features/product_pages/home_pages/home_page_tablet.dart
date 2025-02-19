@@ -29,7 +29,7 @@ class _HomeTabletState extends State<HomeTablet> {
   @override
   Widget build(BuildContext context) {
     final profileInformationCache = Provider.of<ProfileInformationCache>(context);
-    final homePageModel = Provider.of<HomePageModel>(context);
+    final homePageModel = Provider.of<HomePageProvider>(context);
 
     if (!_passed) {
       profileInformationCache.loadUser();
