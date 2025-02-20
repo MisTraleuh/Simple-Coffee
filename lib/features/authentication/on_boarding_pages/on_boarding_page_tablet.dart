@@ -31,7 +31,10 @@ class _OnBoardingPageTabletState extends State<OnBoardingPageTablet> {
             width: width,
             fit: BoxFit.cover,
           ),
-          Text('OnBoarding Page for TABLET', style: TextStyle(color: Colors.white)),
+          const Text(
+            'OnBoarding Page for Tablet',
+            style: TextStyle(color: Colors.white)
+          ),
           Padding(
             padding: EdgeInsets.only(top: height / 4),
             child: Center(

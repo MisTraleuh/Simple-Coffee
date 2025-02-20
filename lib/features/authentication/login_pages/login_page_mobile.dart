@@ -59,7 +59,10 @@ class _LoginPageMobileState extends State<LoginPageMobile> {
                   imagePath: "assets/app/OnBoarding/LoginPage.png",
                 ),
               ),
-              Text('OnBoarding Page for ${this.runtimeType.toString()}', style: TextStyle(color: Colors.white)),
+              Text(
+                'OnBoarding Page for ${runtimeType.toString()}',
+                style: const TextStyle(color: Colors.white)
+              ),
               Positioned(
                 top: height / 20.6,
                 left: width / 12,

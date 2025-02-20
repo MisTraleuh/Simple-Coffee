@@ -33,7 +33,10 @@ class _OnBoardingPageDesktopState extends State<OnBoardingPageDesktop> {
               fit: BoxFit.cover,
             ),
           ),
-          Text('OnBoarding Page for Desktop', style: TextStyle(color: Colors.white)),
+          const Text(
+            'OnBoarding Page for Desktop',
+            style: TextStyle(color: Colors.white)
+          ),
           Padding(
             padding: EdgeInsets.only(top: height / 4),
             child: Center(
