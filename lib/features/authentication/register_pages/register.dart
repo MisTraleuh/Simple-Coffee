@@ -32,8 +32,6 @@ class _RegisterPageState extends State<RegisterPage> {
         return const RegisterPageTablet();
       case ScreenType.mobile:
         return const RegisterPageMobile();
-      default:
-        return const RegisterPageMobile();
     }
   }
 

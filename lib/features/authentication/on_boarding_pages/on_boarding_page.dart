@@ -30,8 +30,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         return const OnBoardingPageTablet();
       case ScreenType.mobile:
         return const OnBoardingPageMobile();
-      default:
-        return const OnBoardingPageMobile();
     }
   }
 }

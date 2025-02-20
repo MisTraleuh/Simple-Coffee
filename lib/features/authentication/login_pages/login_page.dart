@@ -30,8 +30,6 @@ class _LoginPageState extends State<LoginPage> {
         return const LoginPageTablet();
       case ScreenType.mobile:
         return const LoginPageMobile();
-      default:
-        return const LoginPageMobile();
     }
   }
 }

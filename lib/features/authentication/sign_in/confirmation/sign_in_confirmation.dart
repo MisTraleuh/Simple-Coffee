@@ -32,8 +32,6 @@ class _SignInConfirmationState extends State<SignInConfirmation> {
         return const SignInConfirmationTablet();
       case ScreenType.mobile:
         return const SignInConfirmationMobile();
-      default:
-        return const SignInConfirmationMobile();
     }
   }
 }

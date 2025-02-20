@@ -32,8 +32,6 @@ class _SignInStep3State extends State<SignInStep3> {
         return const SignInStep3Tablet();
       case ScreenType.mobile:
         return const SignInStep3Mobile();
-      default:
-        return const SignInStep3Mobile();
     }
   }
 }

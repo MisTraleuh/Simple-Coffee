@@ -22,8 +22,6 @@ import 'package:simple_coffee/shared/providers/pages/details_product_provider.da
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
 
-import 'package:simple_coffee/data/products_lists.dart';
-
 // Material Design
 const Color primaryColor = Color.fromARGB(255, 198, 124, 78);
 const Color secondaryColor = Color.fromARGB(255, 96, 60, 38);
