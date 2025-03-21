@@ -30,7 +30,7 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
   Widget build(BuildContext context) {
     final detailsProductProvider = Provider.of<DetailsProductProvider>(context);
     final favoriteProductProvider = Provider.of<FavoriteProductProvider>(context);
-    final isFavorite = favoriteProductProvider.selectedProduct.contains(widget.product);
+    final isFavorite = favoriteProductProvider.selectedProduct[widget.product['nameType']]!.contains(widget.product);
 
     return Scaffold(
       appBar: AppBar(

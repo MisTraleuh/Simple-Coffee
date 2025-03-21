@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 
 class FavoriteProductProvider extends ChangeNotifier {
-  List<dynamic> _selectedProduct = [];
+  Map<String, List<Map<String, dynamic>>> _selectedProduct = {
+    "Cappuccinos": [],
+    "Machiatos": [],
+    "Lattes": [],
+    "Espressos": [],
+    "Americanos": [],
+    "Mochas": [],
+  };
 
-  List<dynamic> get selectedProduct => _selectedProduct;
+  Map<String, List<Map<String, dynamic>>> get selectedProduct => _selectedProduct;
 
-  void setSelectedProduct(List<dynamic> product) {
-    _selectedProduct = product;
+  void setSelectedProduct(Map<String, List<Map<String, dynamic>>> products) {
+    _selectedProduct = products;
     notifyListeners();
   }
 
-  void addSelectedProduct(dynamic product) {
-    _selectedProduct.add(product);
+  void addSelectedProduct(Map<String, dynamic> product) {
+    _selectedProduct["${product['nameType']}s"]!.add(product);
     notifyListeners();
   }
 
-  void removeSelectedProduct(dynamic product) {
-    _selectedProduct.remove(product);
+  void removeSelectedProduct(Map<String, dynamic> product) {
+    _selectedProduct["${product['nameType']}s"]!.remove(product);
     notifyListeners();
   }
 }
