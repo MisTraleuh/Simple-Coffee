@@ -13,11 +13,13 @@ import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step
 import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
 import 'package:simple_coffee/features/product_pages/home_pages/home.dart';
 import 'package:simple_coffee/features/product_pages/details_product_pages/details_product.dart';
+import 'package:simple_coffee/features/product_pages/favorites_product_pages/favorites_product.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 import 'package:simple_coffee/shared/providers/pages/home_page_provider.dart';
 import 'package:simple_coffee/shared/providers/pages/details_product_provider.dart';
+import 'package:simple_coffee/shared/providers/pages/favorite_product_provider.dart';
 
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
@@ -33,6 +35,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => ProfileInformationCache()),
         ChangeNotifierProvider(create: (context) => HomePageProvider()),
         ChangeNotifierProvider(create: (context) => DetailsProductProvider()),
+        ChangeNotifierProvider(create: (context) => FavoriteProductProvider()),
       ],
       child: const MyApp(),
     ),
@@ -115,6 +118,11 @@ class MyApp extends StatelessWidget {
                     screenType: screenType,
                     product: ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>,
                   );
+                },
+              ),
+          '/favorites': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return FavoritesProduct(screenType: screenType);
                 },
               ),
         },

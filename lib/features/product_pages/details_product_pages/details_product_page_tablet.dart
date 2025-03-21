@@ -4,6 +4,7 @@ import 'package:simple_coffee/models/buttons/SizeSelector.dart';
 
 import 'package:provider/provider.dart';
 import 'package:simple_coffee/shared/providers/pages/details_product_provider.dart';
+import 'package:simple_coffee/shared/providers/pages/favorite_product_provider.dart';
 
 class DetailsProductTablet extends StatefulWidget {
 
@@ -28,6 +29,9 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
   @override
   Widget build(BuildContext context) {
     final detailsProductProvider = Provider.of<DetailsProductProvider>(context);
+    final favoriteProductProvider = Provider.of<FavoriteProductProvider>(context);
+    final isFavorite = favoriteProductProvider.selectedProduct.contains(widget.product);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -45,8 +49,17 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.favorite_border),
+              onPressed: () {
+                if (isFavorite) {
+                  favoriteProductProvider.removeSelectedProduct(widget.product);
+                } else {
+                  favoriteProductProvider.addSelectedProduct(widget.product);
+                }
+              },
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite ? Colors.red : Colors.grey,
+              ),
             ),
           ),
         ],
