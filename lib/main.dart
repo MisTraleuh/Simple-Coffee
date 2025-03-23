@@ -22,6 +22,7 @@ import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
 import 'package:simple_coffee/shared/providers/pages/home_page_provider.dart';
 import 'package:simple_coffee/shared/providers/pages/details_product_provider.dart';
 import 'package:simple_coffee/shared/providers/pages/favorite_product_provider.dart';
+import 'package:simple_coffee/shared/providers/pages/shopping_bag_provider.dart';
 
 // RESPONSIVE IMPORTS
 import 'package:simple_coffee/shared/responsive/screen_type.dart';
@@ -38,6 +39,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => HomePageProvider()),
         ChangeNotifierProvider(create: (context) => DetailsProductProvider()),
         ChangeNotifierProvider(create: (context) => FavoriteProductProvider()),
+        ChangeNotifierProvider(create: (context) => ShoppingBagProvider()),
       ],
       child: const MyApp(),
     ),

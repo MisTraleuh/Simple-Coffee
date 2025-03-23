@@ -46,8 +46,8 @@ class SharedBottomNavBar extends StatelessWidget {
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.lock),
-            label: 'Lock',
+            icon: Icon(Icons.shopping_bag),
+            label: 'Shopping Bag',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),

@@ -5,7 +5,7 @@ import 'package:simple_coffee/models/buttons/SizeSelector.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_coffee/shared/providers/pages/details_product_provider.dart';
 import 'package:simple_coffee/shared/providers/pages/favorite_product_provider.dart';
-
+import 'package:simple_coffee/shared/providers/pages/shopping_bag_provider.dart';
 class DetailsProductTablet extends StatefulWidget {
 
   final Map<String, dynamic> product;
@@ -30,6 +30,8 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
   Widget build(BuildContext context) {
     final detailsProductProvider = Provider.of<DetailsProductProvider>(context);
     final favoriteProductProvider = Provider.of<FavoriteProductProvider>(context);
+    final shoppingBagProvider = Provider.of<ShoppingBagProvider>(context);
+
     final isFavorite = favoriteProductProvider.selectedProduct["${widget.product['nameType']}s"]!.contains(widget.product);
 
     return Scaffold(
@@ -213,14 +215,8 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
                         width: 200,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(
-                              context,
-                              '/order-product',
-                              arguments: {
-                                'product': widget.product,
-                                'selectedSize': detailsProductProvider.selectedButton
-                              }
-                            );
+                            shoppingBagProvider.addSelectedProduct(widget.product);
+                            Navigator.pop(context);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).colorScheme.primary,
