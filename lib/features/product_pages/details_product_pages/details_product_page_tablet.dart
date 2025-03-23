@@ -78,7 +78,7 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
                     child: Container(
-                      height: 300,
+                      height: 200,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
@@ -212,7 +212,16 @@ class _DetailsProductTabletState extends State<DetailsProductTablet> {
                         height: 80,
                         width: 200,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/order-product',
+                              arguments: {
+                                'product': widget.product,
+                                'selectedSize': detailsProductProvider.selectedButton
+                              }
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).colorScheme.primary,
                             shape: RoundedRectangleBorder(

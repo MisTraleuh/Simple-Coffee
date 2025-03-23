@@ -12,8 +12,10 @@ import 'package:simple_coffee/features/authentication/sign_in/step2/sign_in_step
 import 'package:simple_coffee/features/authentication/sign_in/step3/sign_in_step3.dart';
 import 'package:simple_coffee/features/authentication/sign_in/confirmation/sign_in_confirmation.dart';
 import 'package:simple_coffee/features/product_pages/home_pages/home.dart';
+
 import 'package:simple_coffee/features/product_pages/details_product_pages/details_product.dart';
 import 'package:simple_coffee/features/product_pages/favorites_product_pages/favorites_product.dart';
+import 'package:simple_coffee/features/product_pages/order_product_pages/order_product.dart';
 
 // PROVIDERS IMPORTS
 import 'package:simple_coffee/shared/providers/profile_information_cache.dart';
@@ -123,6 +125,14 @@ class MyApp extends StatelessWidget {
           '/favorites': (context) => ResponsivePage(
                 builder: (context, screenType) {
                   return FavoritesProduct(screenType: screenType);
+                },
+              ),
+          '/order-product': (context) => ResponsivePage(
+                builder: (context, screenType) {
+                  return OrderProduct(
+                    screenType: screenType,
+                    arguments: ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?,
+                  );
                 },
               ),
         },

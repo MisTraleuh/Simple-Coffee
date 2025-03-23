@@ -30,7 +30,7 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
   Widget build(BuildContext context) {
     final detailsProductProvider = Provider.of<DetailsProductProvider>(context);
     final favoriteProductProvider = Provider.of<FavoriteProductProvider>(context);
-    final isFavorite = favoriteProductProvider.selectedProduct[widget.product['nameType']]!.contains(widget.product);
+    final isFavorite = favoriteProductProvider.selectedProduct["${widget.product['nameType']}s"]!.contains(widget.product);
 
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +78,7 @@ class _DetailsProductMobileState extends State<DetailsProductMobile> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
                     child: Container(
-                      height: 300,
+                      height: 200,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
